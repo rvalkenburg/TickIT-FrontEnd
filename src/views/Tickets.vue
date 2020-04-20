@@ -1,11 +1,15 @@
 <template>
-  <v-app>
-    <h1>This is an about page</h1>
+  <v-app style="background-color:white;" >
+      <v-container>
+    <Tickets />
+      </v-container>
   </v-app>
 </template>
 <script>
+import Tickets from "../components/Tickets.vue";
+
 export default {
-  name: "About",
+  name: "Ticket",
   computed: {
     currentUser() {
       return this.$store.state.auth.account;
@@ -17,6 +21,11 @@ export default {
     if (!this.currentUser) {
       this.$router.push("/home");
     }
-  }
+  },
+    components: {
+    Tickets,
+  },
+
+  
 };
 </script>

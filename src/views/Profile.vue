@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "About",
+  name: "Profile",
   computed: {
     currentUser() {
       return this.$store.state.auth.account;
