@@ -1,34 +1,32 @@
 <template>
-
-    <v-data-table :headers="headers" :items="tickets" item-key="name"   >
-      
-      <template v-slot:top>
-        <v-container>
-          <v-row>
-            <v-col cols="6">
-              <v-row>
-                <v-text-field  v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
-              </v-row>
-              <v-row>
-                <v-select :items="status" clearable v-model="statusFilterValue" label="Status"></v-select>
-              </v-row>
-            </v-col>
-            <v-col cols="6">
-              <v-row>
-                <v-select :items="Agents" clearable v-model="agentFilterValue" label="Agent"></v-select>
-              </v-row>
-              <v-row>
-                <v-select :items="Companies" clearable v-model="companyFilterValue" label="Company"></v-select>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-container>
-      </template>
-    </v-data-table>
+  <v-data-table :headers="headers" :items="tickets" item-key="name">
+    <template v-slot:top>
+      <v-container>
+        <v-row>
+          <v-col cols="6">
+            <v-row>
+              <v-text-field v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
+            </v-row>
+            <v-row>
+              <v-select :items="status" clearable v-model="statusFilterValue" label="Status"></v-select>
+            </v-row>
+          </v-col>
+          <v-col cols="6">
+            <v-row>
+              <v-select :items="Agents" clearable v-model="agentFilterValue" label="Agent"></v-select>
+            </v-row>
+            <v-row>
+              <v-select :items="Companies" clearable v-model="companyFilterValue" label="Company"></v-select>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -53,62 +51,17 @@ export default {
       caloriesFilterValue: null,
       statusFilterValue: null,
       agentFilterValue: null,
-      companyFilterValue: null,
-
-      tickets: []
+      companyFilterValue: null
     };
-  },
-  computed: {
-    headers() {
-      return [
-        {
-          text: "Title",
-          align: "left",
-          sortable: false,
-          value: "title",
-          filter: this.nameFilter
-        },
-        {
-          text: "Calories",
-          value: "status.name",
-          filter: this.caloriesFilter
-        },
-        { text: "Id", value: "id" },
-        { text: "Status", value: "status.name", filter: this.statusFilter },
-        {
-          text: "Agent",
-          value: "agent.first_name",
-          filter: this.agentFilter,
-          sortable: true
-        },
-        { text: "Company", value: "company.name", filter: this.companyFilter }
-      ];
-    }
   },
 
   methods: {
-    GetTickets() {
-      axios
-        .get("http://localhost:1338/ticket/all", {
-          params: {
-            //id: 1
-          }
-        })
-        .then(Response => {
-          this.tickets = Response.data;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
     nameFilter(value) {
       if (!this.nameFilterValue) {
         return true;
       }
 
-      return value
-        .toLowerCase()
-        .includes(this.nameFilterValue.toLowerCase());
+      return value.toLowerCase().includes(this.nameFilterValue.toLowerCase());
     },
 
     statusFilter(value) {
@@ -132,8 +85,41 @@ export default {
       return value === this.agentFilterValue;
     }
   },
-  mounted() {
-    this.GetTickets();
+
+  created() {
+    this.$store.dispatch('ticket/all');
+  },
+
+  computed: {
+    ...mapGetters({
+      tickets: 'ticket/tickets'
+    }),
+
+    headers() {
+      return [
+        {
+          text: "Title",
+          align: "left",
+          sortable: false,
+          value: "title",
+          filter: this.nameFilter
+        }
+        // {
+        //   text: "Calories",
+        //   value: "status.name",
+        //   filter: this.caloriesFilter
+        // },
+        // { text: "Id", value: "id" },
+        // { text: "Status", value: "status.name", filter: this.statusFilter },
+        // {
+        //   text: "Agent",
+        //   value: "agent.first_name",
+        //   filter: this.agentFilter,
+        //   sortable: true
+        // },
+        // { text: "Company", value: "company.name", filter: this.companyFilter }
+      ];
+    }
   }
 };
 </script>

@@ -1,16 +1,19 @@
 import axios from 'axios';
-import authHeader from './auth-header';
+//import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8080/tickets/';
+const API_URL = 'http://localhost:1338/ticket/';
 
 class TicketService {
-    async getAllTickets() {  
-      const response = await axios
-            .get(API_URL + 'all', {
-                headers: authHeader()
-            });
-        return response.data;
+    async getAllTickets() {
+         return await axios
+            .get(API_URL + 'all').then(Response => {
+                return Response.data;
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+        
     }
-  }
-  
-  export default new TicketService();
+
+
+export default new TicketService();
