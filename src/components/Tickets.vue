@@ -48,7 +48,6 @@ export default {
         { text: "Google", value: "Google" }
       ],
       nameFilterValue: "",
-      caloriesFilterValue: null,
       statusFilterValue: null,
       agentFilterValue: null,
       companyFilterValue: null
@@ -87,37 +86,32 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('ticket/all');
+    this.$store.dispatch("ticket/all");
   },
 
   computed: {
     ...mapGetters({
-      tickets: 'ticket/tickets'
+      tickets: "ticket/tickets"
     }),
 
     headers() {
       return [
+        { text: "Id", value: "id" },
         {
           text: "Title",
           align: "left",
           sortable: false,
           value: "title",
           filter: this.nameFilter
-        }
-        // {
-        //   text: "Calories",
-        //   value: "status.name",
-        //   filter: this.caloriesFilter
-        // },
-        // { text: "Id", value: "id" },
-        // { text: "Status", value: "status.name", filter: this.statusFilter },
-        // {
-        //   text: "Agent",
-        //   value: "agent.first_name",
-        //   filter: this.agentFilter,
-        //   sortable: true
-        // },
-        // { text: "Company", value: "company.name", filter: this.companyFilter }
+        },
+        { text: "Status", value: "status.name", filter: this.statusFilter },
+        {
+          text: "Agent",
+          value: "agent.first_name",
+          filter: this.agentFilter,
+          sortable: true
+        },
+        { text: "Company", value: "company.name", filter: this.companyFilter }
       ];
     }
   }
