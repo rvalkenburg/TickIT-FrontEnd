@@ -1,6 +1,7 @@
 <template>
-  <v-data-table :headers="headers" :items="tickets" item-key="name">
+  <v-data-table :headers="headers" :items="tickets" item-key="id">
     <template v-slot:top>
+      <CreateTicket />
       <v-container>
         <v-row>
           <v-col cols="6">
@@ -27,6 +28,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import CreateTicket from "../components/CreateTicket";
 
 export default {
   data() {
@@ -59,7 +61,6 @@ export default {
       if (!this.nameFilterValue) {
         return true;
       }
-
       return value.toLowerCase().includes(this.nameFilterValue.toLowerCase());
     },
 
@@ -114,6 +115,9 @@ export default {
         { text: "Company", value: "company.name", filter: this.companyFilter }
       ];
     }
+  },
+  components: {
+    CreateTicket
   }
 };
 </script>

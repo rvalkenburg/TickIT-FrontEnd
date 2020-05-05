@@ -4,19 +4,18 @@
     <v-content>
       <router-view></router-view>
     </v-content>
-    <Footer />
   </v-app>
 </template>
 
 <script>
 import NavBar from "../src/components/Navbar.vue";
-import Footer from "../src/components/Footer.vue";
+//import Footer from "../src/components/Footer.vue";
 export default {
   name: "App",
 
   components: {
     NavBar,
-    Footer
+    //Footer
   },
 
   computed: {

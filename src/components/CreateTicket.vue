@@ -11,28 +11,33 @@
         <v-container>
           <v-row>
             <v-col cols="12" sm="6">
-              <v-select :items="companies" v-model="selectedCompany" label="Company*" required></v-select>
+              <v-select
+                item-text="text"
+                item-value="id"
+                :items="companies"
+                v-model="ticket.company"
+                label="Company*"
+                required
+              ></v-select>
             </v-col>
             <v-col cols="12" sm="6">
               <v-select
                 :items="filterUsers()"
-                v-model="selectedUser"
+                item-value="id"
+                v-model="ticket.user"
                 :disabled="enabled"
                 label="User*"
                 required
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6">
-              <v-text-field label="Title*" clearable required></v-text-field>
+              <v-text-field label="Title*" v-model="ticket.title" clearable required></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
-              <v-select
-                :items="agents"
-                label="Agent"
-              ></v-select>
+              <v-select :items="agents" label="Agent" item-value="id" v-model="ticket.agent"></v-select>
             </v-col>
             <v-col cols="12">
-              <v-textarea label="Description" clearable></v-textarea>
+              <v-textarea label="Description" v-model="ticket.description" clearable></v-textarea>
             </v-col>
           </v-row>
         </v-container>
@@ -41,54 +46,62 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-        <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+        <v-btn color="blue darken-1" text @click="createTicket">Create</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import Ticket from "../models/ticket";
+
+
 export default {
   data: () => ({
-    selectedCompany: "",
-    selectedUser: "",
+    ticket: new Ticket(),
     dialog: false,
     enabled: true,
     companies: [
-      { text: "None", value: "" },
-      { text: "Contoso", value: "Contoso" },
-      { text: "Google", value: "Google" }
+      { text: "Contoso", id: "2" },
     ],
     users: [
-      { text: "Roger", company: "Contoso" },
-      { text: "Hugo", company: "Google" }
+      { text: "Roger", company: "2", id: "2" },
+      { text: "John", company: "2", id: "3" }
     ],
-        agents: [
-      { text: "Roger", company: "Contoso" },
-      { text: "Hugo", company: "Google" }
+    agents: [
+      { text: "Roger", company: "2", id: "1" },
+      { text: "John", company: "2", id: "2" }
     ]
   }),
 
   methods: {
     filterUsers: function() {
-      if (!this.selectedCompany) {
-        this.selectedUser = null;
+      if (!this.ticket.company) {
+        //this.ticket.company = null;
         this.enabled = true;
         return this.users;
       }
 
       this.enabled = false;
       return this.users.filter(user => {
-        return user.company.match(this.selectedCompany);
+        return user.company.match(this.ticket.company);
       });
     },
-    filterCompanies: function() {
-      if (!this.selectedUser) {
-        return this.companies;
+    createTicket() {
+      console.log(this.ticket);
+      if (
+        this.ticket.user &&
+        this.ticket.title &&
+        this.ticket.description &&
+        this.ticket.agent
+      ) {
+        this.$store.dispatch("ticket/create", this.ticket).then(response => {
+          console.log(response)
+        },
+        error => {
+          console.log(error)
+        });
       }
-      return this.companies.filter(company => {
-        return company.company.match(this.selectedCompany);
-      });
     }
   }
 };

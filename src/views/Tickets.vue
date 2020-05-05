@@ -1,14 +1,13 @@
 <template>
-  <v-app style="background-color:white;" >
-      <v-container>
-    <Tickets />
-    <CreateTicket />
-      </v-container>
+  <v-app style="background-color:white;">
+    <v-container>
+      <Tickets />
+    </v-container>
   </v-app>
 </template>
+
 <script>
 import Tickets from "../components/Tickets.vue";
-import CreateTicket from "../components/CreateTicket.vue"
 
 export default {
   name: "Ticket",
@@ -24,11 +23,8 @@ export default {
       this.$router.push("/home");
     }
   },
-    components: {
+  components: {
     Tickets,
-    CreateTicket
-  },
-
-  
+  }
 };
 </script>
