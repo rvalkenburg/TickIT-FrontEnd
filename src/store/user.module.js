@@ -13,7 +13,6 @@ export const user = {
     actions: {
         async getAllAgents({ commit }) {
             await axios.get(API_URL + 'agents').then(Response => {
-                console.log(Response);
                 commit('setAgents', Response.data);
             })
                 .catch(error => {
@@ -22,7 +21,6 @@ export const user = {
         },
         async getAllUsers({ commit }) {
             await axios.get(API_URL + 'users' ).then(Response => {
-                console.log(Response);
                 commit('setUsers', Response.data);
             })
                 .catch(error => {
@@ -44,6 +42,9 @@ export const user = {
     },
     getters: {
         users: state => state.users,
-        agents: state => state.agents
+        agents: state => state.agents,
+        getUsersByCompany: (state) => (id) => {
+            return state.users.filter(u => u.company.id == id);
+        }
     },
 };

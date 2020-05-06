@@ -14,7 +14,13 @@
           </v-col>
           <v-col cols="6">
             <v-row>
-              <v-select :items="agents" item-text="first_name" clearable v-model="agentFilterValue" label="Agent"></v-select>
+              <v-select
+                :items="agents"
+                item-text="first_name"
+                clearable
+                v-model="agentFilterValue"
+                label="Agent"
+              ></v-select>
             </v-row>
             <v-row>
               <v-select :items="Companies" clearable v-model="companyFilterValue" label="Company"></v-select>
@@ -23,8 +29,8 @@
         </v-row>
       </v-container>
     </template>
-    <template v-slot:item.actions="{ item }">
-      <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
+    <template v-slot:item.actions="{item}">
+      <v-icon small class="mr-2" @click="editTicket(item)">mdi-pencil</v-icon>
     </template>
   </v-data-table>
 </template>
@@ -37,15 +43,6 @@ export default {
   data() {
     return {
       dialog: false,
-      editedIndex: -1,
-      editedItem: {
-        title: "",
-        description: "",
-        agent: "",
-        user: "",
-        company: ""
-      },
-
       status: [
         { text: "All", value: null },
         { text: "Open", value: "Open" },
@@ -54,8 +51,8 @@ export default {
 
       Companies: [
         { text: "All", value: null },
-        { text: "Contoso", value: "Contoso" },
-        { text: "Google", value: "Google" }
+        { text: "Contoso", value: "2" },
+        { text: "Google", value: "1" }
       ],
       nameFilterValue: "",
       statusFilterValue: null,
@@ -65,6 +62,14 @@ export default {
   },
 
   methods: {
+    editTicket(value) {
+      this.$router.push({
+        name: "editTicket",
+        params: {
+          item: value // or anything you want
+        }
+      });
+    },
     nameFilter(value) {
       if (!this.nameFilterValue) {
         return true;
@@ -92,11 +97,6 @@ export default {
 
       return value === this.agentFilterValue;
     },
-    editItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
-    }
   },
 
   created() {
@@ -109,7 +109,7 @@ export default {
     ...mapGetters({
       tickets: "ticket/tickets",
       agents: "user/agents",
-      users: "user/users"
+      users: "user/getAllUsers"
     }),
 
     headers() {

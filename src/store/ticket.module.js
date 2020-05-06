@@ -13,7 +13,6 @@ export const ticket = {
     actions: {
         async all({ commit }) {
             await axios.get(API_URL + 'all').then(tickets => {
-                console.log(tickets);
                 commit('setTickets', tickets.data);
             })
                 .catch(error => {
@@ -29,7 +28,6 @@ export const ticket = {
                 description: newTicket.description
             })
             .then(response => {
-                console.log(response);
                 commit('newTicket', response);
             }).catch(error => {
                 console.log(error);
@@ -39,7 +37,6 @@ export const ticket = {
     },
     mutations: {
         setTickets(state, tickets) {
-            console.log(tickets);
             state.tickets = tickets;
         },
         newTicket(state, newTicket) {

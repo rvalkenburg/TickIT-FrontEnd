@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Profile from '../views/Profile.vue'
 import Tickets from '../views/Tickets.vue'
+import EditTicket from '../views/EditTicket.vue'
 
 
 Vue.use(VueRouter)
@@ -23,6 +24,12 @@ Vue.use(VueRouter)
     path: '/tickets',
     name: 'tickets',
     component: Tickets
+  },
+  {
+    path: 'editTicket',
+    name: 'editTicket',
+    component: EditTicket,
+    props: true
   },
   {
     path: '/about',

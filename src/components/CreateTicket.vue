@@ -35,7 +35,13 @@
               <v-text-field label="Title*" v-model="ticket.title" clearable required></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
-              <v-select :items="agents" item-text="first_name" label="Agent" item-value="id" v-model="ticket.agent"></v-select>
+              <v-select
+                :items="agents"
+                item-text="first_name"
+                label="Agent"
+                item-value="id"
+                v-model="ticket.agent"
+              ></v-select>
             </v-col>
             <v-col cols="12">
               <v-textarea label="Description" v-model="ticket.description" clearable></v-textarea>
@@ -62,11 +68,9 @@ export default {
     ticket: new Ticket(),
     dialog: false,
     enabled: true,
-    companies: [
-      { text: "Contoso", id: "2" },
-    ],
+    companies: [{ text: "Contoso", id: "2" }]
   }),
-    created() {
+  created() {
     this.$store.dispatch("user/getAllAgents");
     this.$store.dispatch("user/getAllUsers");
   },
@@ -75,7 +79,7 @@ export default {
     ...mapGetters({
       agents: "user/agents",
       users: "user/users"
-    }),
+    })
   },
   methods: {
     filterUsers: function() {
@@ -83,16 +87,8 @@ export default {
         this.enabled = true;
         return this.users;
       }
-        this.enabled = false;
-        return this.users;
-      // this.enabled = false;
-      // return this.users.filter(user => {
-      //   console.log(user.company.id);
-      //   console.log(this.ticket.company);
-      //   console.log(this.users);
-      //   console.log(user.company);
-      //   return user.company.match(this.ticket.company);
-      // });
+      this.enabled = false;
+      return this.$store.getters["user/getUsersByCompany"](this.ticket.company);
     },
     createTicket() {
       console.log(this.ticket);
@@ -102,16 +98,18 @@ export default {
         this.ticket.description &&
         this.ticket.agent
       ) {
-        this.$store.dispatch("ticket/create", this.ticket).then(response => {
-          console.log(response)
-              this.$store.dispatch("ticket/all");
-        },
-        error => {
-          console.log(error)
-        });
+        this.$store.dispatch("ticket/create", this.ticket).then(
+          response => {
+            console.log(response);
+            this.$store.dispatch("ticket/all");
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
-    }
-  },
+    },
 
+  }
 };
 </script>
