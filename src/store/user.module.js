@@ -32,11 +32,9 @@ export const user = {
     },
     mutations: {
         setAgents(state, agents) {
-            console.log(agents);
             state.agents = agents;
         },
         setUsers(state, users) {
-            console.log(users);
             state.users = users;
         }
     },
