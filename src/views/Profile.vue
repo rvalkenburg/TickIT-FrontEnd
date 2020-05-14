@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <h1>This is an about page</h1>
+    <h1>This is an profile page</h1>
   </v-app>
 </template>
 <script>
@@ -12,7 +12,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.currentUser);
 
     if (!this.currentUser) {
       this.$router.push("/home");

@@ -9,7 +9,7 @@
               <v-text-field v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
             </v-row>
             <v-row>
-              <v-select :items="status" clearable v-model="statusFilterValue" label="Status"></v-select>
+              <v-select :items="status" clearable item-value="text" v-model="statusFilterValue" label="Status"></v-select>
             </v-row>
           </v-col>
           <v-col cols="6">
@@ -23,7 +23,7 @@
               ></v-select>
             </v-row>
             <v-row>
-              <v-select :items="Companies" clearable v-model="companyFilterValue" label="Company"></v-select>
+              <v-select :items="Companies" item-value="text" clearable v-model="companyFilterValue" label="Company"></v-select>
             </v-row>
           </v-col>
         </v-row>
@@ -44,15 +44,15 @@ export default {
     return {
       dialog: false,
       status: [
-        { text: "All", value: null },
-        { text: "Open", value: "Open" },
-        { text: "Closed", value: "Closed" }
+        { text: "All" },
+        { text: "Open"},
+        { text: "Closed" }
       ],
 
       Companies: [
-        { text: "All", value: null },
-        { text: "Contoso", value: "2" },
-        { text: "Google", value: "1" }
+ 
+        { text: "Contoso" },
+        { text: "Google" }
       ],
       nameFilterValue: "",
       statusFilterValue: null,
@@ -63,12 +63,18 @@ export default {
 
   methods: {
     editTicket(value) {
-      this.$router.push({
-        name: "editTicket",
-        params: {
-          item: value // or anything you want
+      this.$store.dispatch("ticket/selectTicket", value).then(
+        response => {
+          if(response == null){
+          this.$router.push({
+            name: "editTicket",
+          });
+          }
+        },
+        error => {
+          console.log(error);
         }
-      });
+      );
     },
     nameFilter(value) {
       if (!this.nameFilterValue) {
@@ -96,7 +102,7 @@ export default {
       }
 
       return value === this.agentFilterValue;
-    },
+    }
   },
 
   created() {
@@ -109,7 +115,6 @@ export default {
     ...mapGetters({
       tickets: "ticket/tickets",
       agents: "user/agents",
-      users: "user/getAllUsers"
     }),
 
     headers() {

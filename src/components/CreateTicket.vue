@@ -102,6 +102,7 @@ export default {
           response => {
             console.log(response);
             this.$store.dispatch("ticket/all");
+            this.dialog = false;
           },
           error => {
             console.log(error);

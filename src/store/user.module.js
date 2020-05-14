@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from '../services/auth-header';
 
 const API_URL = 'http://localhost:1338/user/';
 
@@ -12,7 +13,9 @@ export const user = {
 
     actions: {
         async getAllAgents({ commit }) {
-            await axios.get(API_URL + 'agents').then(Response => {
+            await axios.get(API_URL + 'agents', {
+                headers: authHeader(),
+            }).then(Response => {
                 commit('setAgents', Response.data);
             })
                 .catch(error => {
@@ -20,15 +23,17 @@ export const user = {
                 })
         },
         async getAllUsers({ commit }) {
-            await axios.get(API_URL + 'users' ).then(Response => {
+            await axios.get(API_URL + 'users', {
+                headers: authHeader(),
+            }).then(Response => {
                 commit('setUsers', Response.data);
             })
                 .catch(error => {
                     console.log(error);
                 })
         },
-         
-            
+
+
     },
     mutations: {
         setAgents(state, agents) {

@@ -20,7 +20,7 @@
     </v-parallax>
     <v-layout wrap row class="mt-auto">
       <v-flex xl6>
-        <v-card height="100%" outlined=true color="white">
+        <v-card height="100%" outlined color="white">
           <v-card-text>
             <v-card-title primary-title>
               <div>

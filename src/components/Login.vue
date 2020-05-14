@@ -75,7 +75,6 @@ export default {
   },
   methods: {
     handleLogin() {
-      console.log(this.account);
       this.loading = true;
       if (this.account.username && this.account.password) {
         this.$store.dispatch("auth/login", this.account).then(
