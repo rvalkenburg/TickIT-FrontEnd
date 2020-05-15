@@ -5,35 +5,48 @@ import Profile from '../views/Profile.vue'
 import Tickets from '../views/Tickets.vue'
 import EditTicket from '../views/EditTicket.vue'
 import Company from '../views/Company.vue'
-
+import isAdmin from '../router/role.js'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    meta: {
+      is_Admin: false,
+    }
   },
   {
     path: '/tickets',
     name: 'tickets',
-    component: Tickets
+    component: Tickets,
+    meta: {
+      is_Admin: true,
+    }
   },
   {
     path: '/tickets/edit',
     name: 'editTicket',
     component: EditTicket,
+    meta: {
+      is_Admin: true,
+    }
   },
   {
     path: '/company',
     name: 'Company',
-    component: Company
+    component: Company,
+    meta: {
+      is_Admin: true,
+    }
   }
 ]
 
@@ -49,10 +62,25 @@ router.beforeEach((to, from, next) => {
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('account');
 
-  if (authRequired && loggedIn == null) {
-    next('/home');
-  } else {
-    next();
+  //tries to access page while not logged in
+  if (authRequired) {
+    //next('/home');
+    if(loggedIn){
+      if (to.matched.some(record => record.meta.is_Admin == true)) {
+        if (isAdmin()) {
+          next();
+        }
+      }
+  
+      if (to.matched.some(record => record.meta.is_Admin == false)) {
+          next();
+      }
+    } else {
+      next('/home')
+    }  
+  }
+  else {
+    next()
   }
 });
 

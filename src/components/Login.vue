@@ -82,11 +82,7 @@ export default {
             this.$router.push("/profile");
           },
           error => {
-            this.loading = false;
-            this.message =
-              (error.response && error.response.data) ||
-              error.message ||
-              error.toString();
+            console.log(error);
           }
         );
       }

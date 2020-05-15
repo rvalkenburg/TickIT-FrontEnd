@@ -15,7 +15,7 @@
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.title" link route :to="item.route">
+        <v-list-item v-for="item in showIcon()" :key="item.title" link route :to="item.route">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -33,8 +33,13 @@ export default {
   data() {
     return {
       items: [
-        { title: "Profile", icon: "mdi-account", route: "/profile" },
-        { title: "Tickets", icon: "mdi-book", route: "/tickets" },
+        {
+          title: "Profile",
+          icon: "mdi-account",
+          route: "/profile",
+          admin: false
+        },
+        { title: "Tickets", icon: "mdi-book", route: "/tickets", admin: true },
         {
           title: "Companies",
           icon: "mdi-account-group-outline mdi-home-city",
@@ -51,13 +56,20 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("auth/logout", this.account).then(
-          () => {
-            this.$router.push("/home");
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        () => {
+          this.$router.push("/home");
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    },
+    showIcon() {
+      if (this.currentUser.account.role == 'USER') {
+        return this.items.filter(u => u.admin == false);
+      } else {
+        return this.items;
+      }
     }
   }
 };
