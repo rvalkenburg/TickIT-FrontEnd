@@ -59,7 +59,7 @@
                 
 <script>
 import Footer from "@/components/Footer.vue";
-import Login from "@/components/Login.vue";
+import Login from "@/components/Button/Login.vue";
 
 export default {
   components: {

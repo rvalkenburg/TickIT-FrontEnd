@@ -37,13 +37,15 @@ export default {
           title: "Profile",
           icon: "mdi-account",
           route: "/profile",
-          admin: false
+          shared: true
         },
-        { title: "Tickets", icon: "mdi-book", route: "/tickets", admin: true },
+        { title: "Tickets", icon: "mdi-book", route: "/tickets", shared: true },
+        { title: "Tickets", icon: "mdi-book", route: "/ticket/create", admin: false },
         {
           title: "Companies",
           icon: "mdi-account-group-outline mdi-home-city",
-          route: "/company"
+          route: "/company",
+          admin: true
         }
       ]
     };
@@ -65,10 +67,10 @@ export default {
       );
     },
     showIcon() {
-      if (this.currentUser.account.role == 'USER') {
-        return this.items.filter(u => u.admin == false);
+      if (this.currentUser.account.role == "USER") {
+        return this.items.filter(u => u.admin == false || u.shared == true);
       } else {
-        return this.items;
+        return this.items.filter(u => u.admin == true || u.shared == true);
       }
     }
   }

@@ -57,6 +57,18 @@ export const ticket = {
     },
     getters: {
         tickets: state => state.tickets,
-        selectedTicket: state => state.selectedTicket
+        selectedTicket: state => state.selectedTicket,
+        getTicketsByCompany: (state) => (id) => {
+            return state.tickets.filter(u => u.company.id == id);
+        },
+        getTicketsByAgent: (state) => (id) => {
+            return state.tickets.filter(u => u.agent.id == id);
+        },
+        getTicketsByStatus: (state) => (id) => {
+            return state.tickets.filter(u => u.status.id == id);
+        },
+        getTicketsByName: (state) => (id) => {
+            return state.tickets.filter(u => u.company.id == id);
+        }
     },
 };

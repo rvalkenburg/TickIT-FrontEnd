@@ -62,22 +62,17 @@ router.beforeEach((to, from, next) => {
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('account');
 
-  //tries to access page while not logged in
   if (authRequired) {
-    //next('/home');
-    if(loggedIn){
-      if (to.matched.some(record => record.meta.is_Admin == true)) {
-        if (isAdmin()) {
-          next();
-        }
+    if (loggedIn) {
+      if (to.matched.some(record => record.meta.is_Admin == true && isAdmin())) {
+        next();
       }
-  
       if (to.matched.some(record => record.meta.is_Admin == false)) {
-          next();
+        next();
       }
     } else {
       next('/home')
-    }  
+    }
   }
   else {
     next()

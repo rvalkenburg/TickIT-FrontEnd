@@ -9,7 +9,13 @@
               <v-text-field v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
             </v-row>
             <v-row>
-              <v-select :items="status" clearable item-value="text" v-model="statusFilterValue" label="Status"></v-select>
+              <v-select
+                :items="status"
+                clearable
+                item-value="text"
+                v-model="statusFilterValue"
+                label="Status"
+              ></v-select>
             </v-row>
           </v-col>
           <v-col cols="6">
@@ -23,7 +29,13 @@
               ></v-select>
             </v-row>
             <v-row>
-              <v-select :items="Companies" item-value="text" clearable v-model="companyFilterValue" label="Company"></v-select>
+              <v-select
+                :items="Companies"
+                item-value="text"
+                clearable
+                v-model="companyFilterValue"
+                label="Company"
+              ></v-select>
             </v-row>
           </v-col>
         </v-row>
@@ -43,17 +55,9 @@ export default {
   data() {
     return {
       dialog: false,
-      status: [
-        { text: "All" },
-        { text: "Open"},
-        { text: "Closed" }
-      ],
+      status: [{ text: "All" }, { text: "Open" }, { text: "Closed" }],
 
-      Companies: [
- 
-        { text: "Contoso" },
-        { text: "Google" }
-      ],
+      Companies: [{ text: "Contoso" }, { text: "Google" }],
       nameFilterValue: "",
       statusFilterValue: null,
       agentFilterValue: null,
@@ -65,10 +69,10 @@ export default {
     editTicket(value) {
       this.$store.dispatch("ticket/selectTicket", value).then(
         response => {
-          if(response == null){
-          this.$router.push({
-            name: "editTicket",
-          });
+          if (response == null) {
+            this.$router.push({
+              name: "editTicket"
+            });
           }
         },
         error => {
@@ -114,7 +118,7 @@ export default {
   computed: {
     ...mapGetters({
       tickets: "ticket/tickets",
-      agents: "user/agents",
+      agents: "user/agents"
     }),
 
     headers() {
