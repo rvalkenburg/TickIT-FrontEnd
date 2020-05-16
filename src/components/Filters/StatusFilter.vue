@@ -7,8 +7,17 @@ export default {
   data() {
     return {
       status: [{ text: "All" }, { text: "Open" }, { text: "Closed" }],
-      statusFilterValue: null,
+      statusFilterValue: null
     };
   },
-}
+  methods: {
+    filterOnStatus() {
+      if (this.statusFilterValue != null) {
+        this.$store.dispatch(
+          "ticket/getTicketsByStatus",
+          this.statusFilterValue
+        );
+      }}
+    }
+};
 </script>
