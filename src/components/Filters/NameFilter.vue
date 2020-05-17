@@ -1,5 +1,5 @@
 <template>
-  <v-text-field v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
+  <v-text-field @keyup="filterOnName()" v-model="nameFilterValue" clearable type="text" label="Name"></v-text-field>
 </template>
 
 <script>
@@ -10,13 +10,8 @@ export default {
     };
   },
   methods: {
-    filterOnCompany() {
-      if (this.nameFilterValue != null) {
-        this.$store.dispatch(
-          "ticket/getTicketsByName",
-          this.nameFilterValue
-        );
-      }
+    filterOnName() {
+      this.$store.dispatch("filter/filterName", this.nameFilterValue);
     }
   }
 };

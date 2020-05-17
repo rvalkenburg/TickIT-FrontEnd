@@ -3,7 +3,7 @@
     @change="filterOnStatus()"
     :items="status"
     clearable
-    item-value="text"
+    item-value="value"
     v-model="statusFilterValue"
     label="Status"
   ></v-select>
@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     filterOnStatus() {
-      console.log(this.statusFilterValue);
       this.$store.dispatch("filter/filterStatus", this.statusFilterValue);
     }
   }

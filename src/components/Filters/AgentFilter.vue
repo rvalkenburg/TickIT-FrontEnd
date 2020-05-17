@@ -1,5 +1,6 @@
 <template>
   <v-select
+    @change="filterOnAgent()"
     :items="agents"
     item-text="first_name"
     clearable
@@ -10,16 +11,15 @@
 
 <script>
 export default {
-  props: ['tickets'],
   data() {
     return {
-      agents: ['test'],
+      agents: ["test"],
       agentFilterValue: null
     };
   },
   methods: {
     filterOnAgent() {
-        this.$store.dispatch("ticket/getTicketsByAgent", this.agentFilterValue);
+      this.$store.dispatch("filter/filterAgent", this.agentFilterValue);
     }
   }
 };

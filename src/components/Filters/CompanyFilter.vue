@@ -1,5 +1,6 @@
 <template>
   <v-select
+    @change="filterOnCompany()"
     :items="Companies"
     item-value="text"
     clearable
@@ -18,9 +19,7 @@ export default {
   },
   methods: {
     filterOnCompany() {
-      if (this.companyFilterValue != null) {
-        this.$store.dispatch("ticket/getTicketsByCompany", this.companyFilterValue);
-      }
+      this.$store.dispatch("filter/filterCompnay", this.companyFilterValue);
     }
   }
 };

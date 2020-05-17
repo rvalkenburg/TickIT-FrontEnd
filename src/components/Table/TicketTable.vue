@@ -39,7 +39,6 @@ export default {
     },
 
     statusFilter(value) {
-      console.log(this.statusFilterValue)
       if (!this.statusFilterValue) {
         return true;
       }
@@ -67,6 +66,9 @@ export default {
       tickets: "ticket/tickets",
       agents: "user/agents",
       statusFilterValue: "filter/getStatus",
+      companyFilterValue: "filter/getCompany",
+      nameFilterValue: "filter/getName",
+      agentFilterValue: "filter/getAgent",
     }),
 
     headers() {

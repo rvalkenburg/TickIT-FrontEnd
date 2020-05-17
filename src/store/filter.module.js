@@ -16,7 +16,6 @@ export const filter = {
             commit('setCompany', company);
         },
         filterStatus({commit}, status){
-            console.log(status);
             commit('setStatus', status);
         },
         filterName({commit}, name){
@@ -35,14 +34,13 @@ export const filter = {
             state.name = name;
         },
         setStatus(state, status) {
-            console.log(status);
             state.status = status;
         }
     },
     getters: {
-        company: state => state.company,
-        agent: state => state.agent,
-        name: state => state.name,
+        getCompany: state => state.company,
+        getAgent: state => state.agent,
+        getName: state => state.name,
         getStatus: state => state.status,
     },
 };
