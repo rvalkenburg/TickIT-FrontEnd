@@ -113,6 +113,7 @@ export default {
     this.$store.dispatch("ticket/all");
     this.$store.dispatch("user/getAllAgents");
     this.$store.dispatch("user/getAllUsers");
+    
   },
 
   computed: {

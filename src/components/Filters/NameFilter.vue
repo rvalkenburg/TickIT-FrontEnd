@@ -6,8 +6,18 @@
 export default {
   data() {
     return {
-      nameFilterValue: "",
+      nameFilterValue: ""
     };
   },
-}
+  methods: {
+    filterOnCompany() {
+      if (this.nameFilterValue != null) {
+        this.$store.dispatch(
+          "ticket/getTicketsByName",
+          this.nameFilterValue
+        );
+      }
+    }
+  }
+};
 </script>

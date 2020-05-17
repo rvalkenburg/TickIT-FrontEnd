@@ -7,17 +7,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       dialog: false,
-      status: [{ text: "All" }, { text: "Open" }, { text: "Closed" }],
-
-      Companies: [{ text: "Contoso" }, { text: "Google" }],
-      nameFilterValue: "",
-      statusFilterValue: null,
-      agentFilterValue: null,
-      companyFilterValue: null
     };
   },
 
@@ -36,9 +31,44 @@ export default {
         }
       );
     },
+    nameFilter(value) {
+      if (!this.nameFilterValue) {
+        return true;
+      }
+      return value.toLowerCase().includes(this.nameFilterValue.toLowerCase());
+    },
+
+    statusFilter(value) {
+      console.log(this.statusFilterValue)
+      if (!this.statusFilterValue) {
+        return true;
+      }
+      return value === this.statusFilterValue;
+    },
+    companyFilter(value) {
+      if (!this.companyFilterValue) {
+        return true;
+      }
+
+      return value === this.companyFilterValue;
+    },
+    agentFilter(value) {
+      if (!this.agentFilterValue) {
+        return true;
+      }
+
+      return value === this.agentFilterValue;
+    }
   },
 
   computed: {
+
+    ...mapGetters({
+      tickets: "ticket/tickets",
+      agents: "user/agents",
+      statusFilterValue: "filter/getStatus",
+    }),
+
     headers() {
       return [
         { text: "Id", value: "id" },

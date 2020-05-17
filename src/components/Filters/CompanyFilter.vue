@@ -16,5 +16,12 @@ export default {
       companyFilterValue: null
     };
   },
-}
+  methods: {
+    filterOnCompany() {
+      if (this.companyFilterValue != null) {
+        this.$store.dispatch("ticket/getTicketsByCompany", this.companyFilterValue);
+      }
+    }
+  }
+};
 </script>
