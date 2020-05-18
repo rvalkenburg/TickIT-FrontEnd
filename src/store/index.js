@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createPersistedState from "vuex-persistedstate";
 
 import { auth } from './auth.module';
 import { ticket } from './ticket.module';
@@ -18,8 +17,4 @@ export default new Vuex.Store({
     filter
 
   },
-  plugins: [
-    createPersistedState({
-      paths: ['ticket'],
-    })],
 });

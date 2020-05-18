@@ -1,16 +1,29 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8080/user/';
+const API_URL = 'http://localhost:1338/user/';
 
 class UserService {
-    async getAllUsers() {  
-      const response = await axios
-            .get(API_URL + 'all', {
-                headers: authHeader()
-            });
-        return response.data;
+    async getAllUsers() {
+        return await axios.get(API_URL + 'users', {
+            headers: authHeader(),
+        }).then(response => {
+            return response.data
+        })
+            .catch(error => {
+                console.log(error);
+            })
     }
-  }
-  
-  export default new UserService();
+    async getAllAgents() {
+        return await axios.get(API_URL + 'agents', {
+            headers: authHeader(),
+        }).then(response => {
+            return response.data
+        })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+}
+
+export default new UserService();

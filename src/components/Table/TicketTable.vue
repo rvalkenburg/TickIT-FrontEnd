@@ -15,7 +15,12 @@ export default {
       dialog: false,
     };
   },
-
+  created() {
+    this.$store.dispatch("ticket/all");
+    this.$store.dispatch("user/getAllAgents");
+    this.$store.dispatch("user/getAllUsers");
+    
+  },
   methods: {
     editTicket(value) {
       this.$store.dispatch("ticket/selectTicket", value).then(

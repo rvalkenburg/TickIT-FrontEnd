@@ -1,30 +1,32 @@
 <template>
   <v-app style="background-color:white;">
     <v-container>
-    <v-row>
-      <v-col cols="6">
-        <NameFilter />
-      </v-col>
-      <v-col cols="6">
-        <CompanyFilter />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="6">
-        <AgentFilter />
-      </v-col>
-      <v-col cols="6">
-        <StatusFilter />
-      </v-col>
-    </v-row>
+      <v-row>
+        <v-col cols="5">
+          <NameFilter />
+        </v-col>
+        <v-col cols="5">
+          <CompanyFilter />
+        </v-col>
+        <v-col cols="2">
+          <CreateTicket />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="5">
+          <AgentFilter />
+        </v-col>
+        <v-col cols="5">
+          <StatusFilter />
+        </v-col>
+      </v-row>
     </v-container>
     <v-container>
-    <v-row>
-      <v-col cols="12">
-      <Tickets />
-
-      </v-col>
-    </v-row>
+      <v-row>
+        <v-col cols="12">
+          <Tickets />
+        </v-col>
+      </v-row>
     </v-container>
   </v-app>
 </template>
@@ -35,6 +37,7 @@ import CompanyFilter from "../components/Filters/CompanyFilter";
 import AgentFilter from "../components/Filters/AgentFilter";
 import StatusFilter from "../components/Filters/StatusFilter";
 import NameFilter from "../components/Filters/NameFilter";
+import CreateTicket from "../components/Button/CreateTicket"
 
 export default {
   name: "Ticket",
@@ -55,7 +58,8 @@ export default {
     CompanyFilter,
     AgentFilter,
     StatusFilter,
-    NameFilter
+    NameFilter,
+    CreateTicket,
   }
 };
 </script>

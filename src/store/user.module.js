@@ -1,7 +1,4 @@
-import axios from 'axios';
-import authHeader from '../services/auth-header';
-
-const API_URL = 'http://localhost:1338/user/';
+import UserService from '../services/user.service';
 
 export const user = {
     namespaced: true,
@@ -13,21 +10,19 @@ export const user = {
 
     actions: {
         async getAllAgents({ commit }) {
-            await axios.get(API_URL + 'agents', {
-                headers: authHeader(),
-            }).then(Response => {
-                commit('setAgents', Response.data);
-            })
+            await UserService.getAllAgents()
+                .then(response => {
+                    commit('setAgents', response);
+                })
                 .catch(error => {
                     console.log(error);
                 })
         },
         async getAllUsers({ commit }) {
-            await axios.get(API_URL + 'users', {
-                headers: authHeader(),
-            }).then(Response => {
-                commit('setUsers', Response.data);
-            })
+            await UserService.getAllUsers()
+                .then(response => {
+                    commit('setUsers', response);
+                })
                 .catch(error => {
                     console.log(error);
                 })

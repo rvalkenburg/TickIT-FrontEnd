@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import Ticket from "../models/ticket";
+import Ticket from "../../models/account";
 import { mapGetters } from "vuex";
 
 export default {

@@ -1,7 +1,4 @@
-import axios from 'axios';
-
-import authHeader from '../services/auth-header'
-const API_URL = 'http://localhost:1338/ticket/';
+import TicketService from '../services/ticket.service';
 
 export const ticket = {
     namespaced: true,
@@ -15,25 +12,16 @@ export const ticket = {
 
     actions: {
         async all({ commit }) {
-            await axios.get(API_URL + 'all', {
-                headers: authHeader(),
-            }).then(tickets => {
-                commit('setTickets', tickets.data);
+            await TicketService.getAllTickets()
+            .then(response => {
+                commit('setTickets', response);
             })
                 .catch(error => {
                     console.log(error);
                 })
         },
         async create({ commit }, newTicket) {
-            await axios.post(API_URL + 'create', {
-                company: newTicket.company,
-                user: newTicket.user,
-                agent: newTicket.agent,
-                title: newTicket.title,
-                description: newTicket.description
-            }, {
-                headers: authHeader()
-            })
+            await TicketService.createTicket(newTicket)
                 .then(response => {
                     commit('newTicket', response);
                 }).catch(error => {
