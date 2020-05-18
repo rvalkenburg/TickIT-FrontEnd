@@ -32,6 +32,4 @@ class TicketService {
             ;
     }
 }
-
-
 export default new TicketService();
