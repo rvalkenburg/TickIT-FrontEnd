@@ -1,17 +1,41 @@
+import CompanyService from '../services/company.service';
+
 export const company = {
     namespaced: true,
 
     state: {
         companies: [],
         company: '',
+        newCompany: ''
     },
 
     actions: {
-        getCompany({ commit }, company) {
-            commit('setCompany', company);
+        async all({ commit }) {
+            await CompanyService.getAllCompanies()
+                .then(response => {
+                    commit('setCompanies', response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         },
-        getCompanies({ commit }) {
-            commit('setCompany');
+        async getById({ commit }, id) {
+            await CompanyService.getCompany(id)
+                .then(response => {
+                    commit('setCompany', response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        async create({ commit }, company) {
+            await CompanyService.createCompany(company)
+                .then(response => {
+                    commit('setCreatedCompany', response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         },
     },
     mutations: {
@@ -21,9 +45,13 @@ export const company = {
         setCompanies(state, companies) {
             state.companies = companies;
         },
+        setCreatedCompany(state, company) {
+            state.newCompany = company;
+        },
     },
     getters: {
         company: state => state.company,
-        companies: state => state.companies
+        companies: state => state.companies,
+        newCompany: state => state.newCompany
     },
 };
