@@ -18,10 +18,9 @@
             <v-card-text>surname: {{currentTicket.creator.surname}}</v-card-text>
             <v-card-text>email: {{currentTicket.creator.username}}</v-card-text>
           </v-card>
-          <v-container></v-container>
         </v-col>
         <v-col cols="4">
-          <v-btn depressed large color="primary">Save</v-btn>
+          <v-btn @click="saveTicket" depressed large color="primary">Save</v-btn>
         </v-col>
       </v-row>
       <v-row dense>
@@ -52,8 +51,15 @@
           <v-card outlined>
             <v-card-title>Add comment</v-card-title>
             <v-container>
-              <v-textarea name="input-7-1" label="Add new comment here..." auto-grow outlined value></v-textarea>
-              <v-btn class="mr-4" justify @click="saveTicket">submit</v-btn>
+              <v-textarea
+                name="input-7-1"
+                v-model="comment.comment"
+                label="Add new comment here..."
+                auto-grow
+                outlined
+                value
+              ></v-textarea>
+              <v-btn class="mr-4" justify @click="addComment">submit</v-btn>
             </v-container>
           </v-card>
         </v-col>
@@ -71,7 +77,6 @@
                 outlined
                 readonly
                 v-model="comment.comment"
-                disabled
               ></v-textarea>
             </v-container>
           </v-card>
@@ -82,33 +87,75 @@
 </template>
 
 <script>
+import Comment from "../models/comment";
+import EditTicket from '../models/editTicket';
 
 export default {
   data() {
     return {
       dialog: false,
+      comment: new Comment(),
+      ticket: new EditTicket(),
+
       status: [
-        { text: "Open", value: "Open" },
-        { text: "Closed", value: "Closed" }
-      ],
-      comments: [
-        { id: 1, text: "Open" },
-        { id: 2, text: "Closed" },
-        { id: 3, text: "Closed" },
-        { id: 4, text: "Closed" }
+        { text: "Open", value: "1" },
+        { text: "Closed", value: "2" }
       ]
     };
   },
   methods: {
-    saveTicket() {}
+    saveTicket() {
+      this.ticket.ticketid = this.currentTicket.id,
+      this.ticket.agent = this.currentUser.account.id,
+      this.ticket.status = this.currentTicket.status.name
+      if (
+        this.ticket.ticketid &&
+        this.ticket.agent &&
+        this.ticket.status
+      ) {
+      console.log(this.currentTicket);
+
+        this.$store.dispatch("ticket/edit", this.ticket).then(
+          response => {
+            console.log(response);
+            //this.$store.dispatch("ticket/all");
+            this.dialog = false;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    },
+    addComment() {
+      this.comment.userid = this.currentUser.account.id,
+      this.comment.ticketid = this.currentTicket.id
+      if (
+        this.comment.userid &&
+        this.comment.ticketid &&
+        this.comment.comment
+      ) {
+        this.$store.dispatch("comment/create", this.comment).then(
+          response => {
+            console.log(response);
+            this.$store.dispatch("ticket/all");
+            this.dialog = false;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
   },
 
   computed: {
     currentTicket() {
       return this.$store.getters["ticket/selectedTicket"];
-      
+    },
+    currentUser() {
+      return this.$store.state.auth.account;
     }
-  },
-  
+  }
 };
 </script>

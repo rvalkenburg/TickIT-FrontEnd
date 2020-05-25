@@ -28,6 +28,15 @@ export const ticket = {
                     console.log(error);
                 })
         },
+        async edit({ commit }, newTicket) {
+            console.log(newTicket)
+            await TicketService.editTicket(newTicket)
+                .then(response => {
+                    commit('newTicket', response);
+                }).catch(error => {
+                    console.log(error);
+                })
+        },
         selectTicket({ commit }, ticket) {
             commit('selectedTicket', ticket);
         }

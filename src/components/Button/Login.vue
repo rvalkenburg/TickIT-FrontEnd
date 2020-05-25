@@ -9,6 +9,11 @@
       <v-card-title>
         <span class="headline">Sign in</span>
       </v-card-title>
+      <v-alert
+        v-if="login == false"
+        dismissible="login == true"
+        type="warning"
+      >Incorrect credentials</v-alert>
       <v-card-text>
         <v-container>
           <v-row>
@@ -56,6 +61,7 @@ export default {
     return {
       account: new Account("", ""),
       loading: false,
+      login: true,
       dialog: false,
       rules: {
         required: value => !!value || "Required.",
@@ -76,12 +82,14 @@ export default {
   methods: {
     handleLogin() {
       this.loading = true;
+      this.login = true;
       if (this.account.username && this.account.password) {
         this.$store.dispatch("auth/login", this.account).then(
           () => {
             this.$router.push("/profile");
           },
           error => {
+            this.login = false;
             console.log(error);
           }
         );

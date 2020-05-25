@@ -4,5 +4,5 @@ export default class Company {
       this.address = address;
       this.city = city;
       this.country = country;
-    }
+        }
   }

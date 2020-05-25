@@ -31,5 +31,22 @@ class TicketService {
             })
             ;
     }
+    async editTicket(ticket) {
+        console.log(ticket)
+        return await axios.put(API_URL + 'edit', {
+            status: ticket.status,
+            ticket: ticket.ticketid,
+            agent: ticket.agent,
+
+        }, {
+            headers: authHeader()
+        })
+            .then(response => {
+                return response.data
+            }).catch(error => {
+                console.log(error);
+            })
+            ;
+    }
 }
 export default new TicketService();

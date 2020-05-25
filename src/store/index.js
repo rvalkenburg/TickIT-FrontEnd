@@ -6,6 +6,7 @@ import { ticket } from './ticket.module';
 import { user } from './user.module';
 import { filter } from './filter.module';
 import { company } from './company.module';
+import { comment } from './comment.module';
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     ticket,
     user,
     filter,
-    company
+    company,
+    comment
   },
 });
