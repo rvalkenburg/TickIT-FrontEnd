@@ -1,8 +1,9 @@
 <template>
   <v-select
     @change="filterOnCompany()"
-    :items="Companies"
-    item-value="text"
+    :items="companies"
+    item-text="name"
+    item-value="name"
     clearable
     v-model="companyFilterValue"
     label="Company"
@@ -10,13 +11,24 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      Companies: [{ text: "Contoso" }, { text: "Google" }],
       companyFilterValue: null
     };
   },
+  created() {
+    this.$store.dispatch("company/all");
+  },
+  computed: {
+    ...mapGetters({
+      companies: "company/companies",
+      nameFilterValue: "filter/getName"
+    })
+  },
+
   methods: {
     filterOnCompany() {
       this.$store.dispatch("filter/filterCompnay", this.companyFilterValue);

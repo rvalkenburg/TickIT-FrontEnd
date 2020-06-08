@@ -12,14 +12,12 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      dialog: false,
+      dialog: false
     };
   },
   created() {
-    this.$store.dispatch("ticket/all");
     this.$store.dispatch("user/getAllAgents");
     this.$store.dispatch("user/getAllUsers");
-    
   },
   methods: {
     editTicket(value) {
@@ -66,14 +64,13 @@ export default {
   },
 
   computed: {
-
     ...mapGetters({
       tickets: "ticket/tickets",
       agents: "user/agents",
       statusFilterValue: "filter/getStatus",
       companyFilterValue: "filter/getCompany",
       nameFilterValue: "filter/getName",
-      agentFilterValue: "filter/getAgent",
+      agentFilterValue: "filter/getAgent"
     }),
 
     headers() {
@@ -93,10 +90,10 @@ export default {
           filter: this.agentFilter,
           sortable: true
         },
-        { text: "Company", value: "company.name", filter: this.companyFilter },
+        { text: "Company", value: "creator.company.name", filter: this.companyFilter },
         { text: "Actions", value: "actions", sortable: false }
       ];
     }
-  },
+  }
 };
 </script>

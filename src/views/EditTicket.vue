@@ -5,10 +5,10 @@
         <v-col cols="4">
           <v-card outlined min-height="275">
             <v-card-title>Company details</v-card-title>
-            <v-card-text>Name: {{currentTicket.company.name}}</v-card-text>
-            <v-card-text>Country: {{currentTicket.company.country}}</v-card-text>
-            <v-card-text>City: {{currentTicket.company.city}}</v-card-text>
-            <v-card-text>Address: {{currentTicket.company.address}}</v-card-text>
+            <v-card-text>Name: {{currentTicket.creator.company.name}}</v-card-text>
+            <v-card-text>Country: {{currentTicket.creator.company.country}}</v-card-text>
+            <v-card-text>City: {{currentTicket.creator.company.city}}</v-card-text>
+            <v-card-text>Address: {{currentTicket.creator.company.address}}</v-card-text>
           </v-card>
         </v-col>
         <v-col cols="4">

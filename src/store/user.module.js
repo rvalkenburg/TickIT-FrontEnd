@@ -27,8 +27,6 @@ export const user = {
                     console.log(error);
                 })
         },
-
-
     },
     mutations: {
         setAgents(state, agents) {

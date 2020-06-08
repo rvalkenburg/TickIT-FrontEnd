@@ -2,63 +2,32 @@
   <v-app>
     <v-container>
       <v-row>
-        <h1>This is an company page</h1>
+        <v-col cols="5">
+          <NameFilter />
+        </v-col>
       </v-row>
       <v-row>
-          <v-container v-for="company in companies" v-bind:key="company.id">
-            <v-card outlined>
-              <v-card-title>{{company.Text}}</v-card-title>
-            </v-card>
-          </v-container>
+        <v-container>
+          <v-col cols="12">
+            <CompanyTable />
+          </v-col>
+        </v-container>
       </v-row>
     </v-container>
   </v-app>
 </template>
 
 <script>
+import CompanyTable from "../components/Table/CompanyTable";
+import NameFilter from "../components/Filters/NameFilter";
+
 export default {
-  data() {
-    return {
-      companies: [
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 1
-        },
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 2
-        },
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 3
-        },
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 4
-        },
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 5
-        },
-        {
-          Text: "Contoso",
-          address: "Rachelsmolen 1",
-          city: "Eindhoven",
-          id: 6
-        },
-        { Text: "Contoso", address: "Rachelsmolen 1", city: "Eindhoven", id: 7 }
-      ]
-    };
-  }
+  created() {
+    this.$store.dispatch("company/all");
+  },
+  components: {
+    CompanyTable,
+    NameFilter
+  },
 };
 </script>

@@ -10,6 +10,7 @@ export const filter = {
 
     actions: {
         filterAgent({commit}, agent){
+            console.log(agent)
             commit('setAgent', agent);
         },
         filterCompnay({commit}, company){
@@ -25,7 +26,7 @@ export const filter = {
     },
     mutations: {
         setAgent(state, agent) {
-            state.agents = agent;
+            state.agent = agent;
         },
         setCompany(state, company) {
             state.company = company;

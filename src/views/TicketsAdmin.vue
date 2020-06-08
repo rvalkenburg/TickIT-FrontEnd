@@ -37,10 +37,9 @@ import CompanyFilter from "../components/Filters/CompanyFilter";
 import AgentFilter from "../components/Filters/AgentFilter";
 import StatusFilter from "../components/Filters/StatusFilter";
 import NameFilter from "../components/Filters/NameFilter";
-import CreateTicket from "../components/Button/CreateTicket"
+import CreateTicket from "../components/Button/CreateTicket";
 
 export default {
-  name: "Ticket",
   computed: {
     currentUser() {
       return this.$store.state.auth.account;
@@ -53,13 +52,18 @@ export default {
       this.$router.push("/home");
     }
   },
+  created() {
+        this.$store.dispatch("ticket/all");
+
+  },
+
   components: {
     Tickets,
     CompanyFilter,
     AgentFilter,
     StatusFilter,
     NameFilter,
-    CreateTicket,
+    CreateTicket
   }
 };
 </script>

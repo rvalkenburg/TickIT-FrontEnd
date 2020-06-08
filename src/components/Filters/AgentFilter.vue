@@ -2,7 +2,7 @@
   <v-select
     @change="filterOnAgent()"
     :items="agents"
-    item-text="first_name"
+    item-text="account.first_name"
     clearable
     v-model="agentFilterValue"
     label="Agent"
@@ -10,12 +10,21 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      agents: ["test"],
-      agentFilterValue: null
+      agentFilterValue: ''
     };
+  },
+  created() {
+    this.$store.dispatch("user/getAllAgents");
+  },
+    computed: {
+    ...mapGetters({
+      agents: "user/agents",
+    })
   },
   methods: {
     filterOnAgent() {

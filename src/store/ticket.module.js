@@ -20,6 +20,15 @@ export const ticket = {
                     console.log(error);
                 })
         },
+        async getByAccountId({ commit }, id) {
+            await TicketService.getAllTicketsByAccountId(id)
+            .then(response => {
+                commit('setTickets', response);
+            })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
         async create({ commit }, newTicket) {
             await TicketService.createTicket(newTicket)
                 .then(response => {
