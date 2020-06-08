@@ -30,8 +30,8 @@ export const company = {
         },
         async create({ commit }, company) {
             await CompanyService.createCompany(company)
-                .then(response => {
-                    commit('setCreatedCompany', response);
+                .then(() => {
+                    commit('setCreatedCompany', company);
                 })
                 .catch(error => {
                     console.log(error);

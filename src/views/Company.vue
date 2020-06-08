@@ -5,6 +5,9 @@
         <v-col cols="5">
           <NameFilter />
         </v-col>
+        <v-col cols="7">
+          <CreateCompany />
+        </v-col>
       </v-row>
       <v-row>
         <v-container>
@@ -20,6 +23,7 @@
 <script>
 import CompanyTable from "../components/Table/CompanyTable";
 import NameFilter from "../components/Filters/NameFilter";
+import CreateCompany from "../components/Button/CreateCompany";
 
 export default {
   created() {
@@ -27,7 +31,8 @@ export default {
   },
   components: {
     CompanyTable,
-    NameFilter
-  },
+    NameFilter,
+    CreateCompany
+  }
 };
 </script>

@@ -1,11 +1,11 @@
- import axios from 'axios';
- import authHeader from './auth-header';
+import axios from 'axios';
+import authHeader from './auth-header';
 
- const API_URL = 'http://localhost:1338/company/';
+const API_URL = 'http://localhost:1338/company';
 
 class CompanyService {
     async getAllCompanies() {
-        return await axios.get(API_URL + 'all', {
+        return await axios.get(API_URL + '/all', {
             headers: authHeader(),
         }).then(response => {
             return response.data;
@@ -15,7 +15,7 @@ class CompanyService {
             })
     }
     async getCompany(id) {
-        return await axios.get(API_URL + id, {
+        return await axios.get(API_URL + "/" + id, {
             headers: authHeader(),
         }).then(response => {
             return response.data;
@@ -25,7 +25,7 @@ class CompanyService {
             })
     }
     async createCompany(newCompany) {
-        return await axios.post(API_URL + 'create', {
+        return await axios.post(API_URL, {
             name: newCompany.name,
             address: newCompany.address,
             city: newCompany.city,
@@ -34,7 +34,7 @@ class CompanyService {
             headers: authHeader()
         })
             .then(response => {
-                return response.data
+                return response
             }).catch(error => {
                 console.log(error);
             })

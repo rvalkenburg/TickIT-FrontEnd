@@ -53,8 +53,7 @@ export default {
     }
   },
   created() {
-        this.$store.dispatch("ticket/all");
-
+    this.$store.dispatch("ticket/all");
   },
 
   components: {

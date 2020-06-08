@@ -8,8 +8,7 @@
             <v-card-text>Name: {{currentUser.account.first_name}}</v-card-text>
             <v-card-text>Address: {{currentUser.account.surname}}</v-card-text>
             <v-card-text>City: {{currentUser.account.username}}</v-card-text>
-                        <v-card-text>Country: {{currentUser.account.username}}</v-card-text>
-
+            <v-card-text>Country: {{currentUser.account.username}}</v-card-text>
           </v-card>
         </v-col>
         <v-col cols="6">
