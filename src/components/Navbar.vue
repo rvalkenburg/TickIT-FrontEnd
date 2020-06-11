@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <v-navigation-drawer bottom app fixed permanent>
-      <v-list-item class="px-2">
+    <v-navigation-drawer bottom app fixed permanent >
+      <v-list-item class="px-4 background" >
         <v-list-item-avatar>
           <v-img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png"
@@ -14,8 +14,8 @@
       </v-list-item>
       <v-divider></v-divider>
 
-      <v-list dense>
-        <v-list-item v-for="item in showIcon()" :key="item.title" link route :to="item.route">
+      <v-list dense >
+        <v-list-item v-for="item in showIcon()" :key="item.title" link route :to="item.route" >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -76,3 +76,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.background {
+  background-color: rgb(146, 146, 146);
+}
+.itemlist{
+  background-color: hotpink;
+}
+</style>

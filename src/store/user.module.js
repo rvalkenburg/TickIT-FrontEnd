@@ -27,6 +27,20 @@ export const user = {
                     console.log(error);
                 })
         },
+        async getByCompany({ commit }, id) {
+            await UserService.getUsersByCompany(id)
+                .then(response => {
+                    commit('setUsers', response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        setUsers({commit}, users){
+            commit('setUsers', users)
+        }
+
+    
     },
     mutations: {
         setAgents(state, agents) {

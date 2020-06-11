@@ -3,23 +3,27 @@
     <v-container>
       <v-row color="grey" dense>
         <v-col cols="4">
-          <v-card outlined min-height="275">
+          <v-card outlined min-height="200">
             <v-card-title>Company details</v-card-title>
-            <v-card-text>Name: {{currentTicket.creator.company.name}}</v-card-text>
-            <v-card-text>Country: {{currentTicket.creator.company.country}}</v-card-text>
-            <v-card-text>City: {{currentTicket.creator.company.city}}</v-card-text>
-            <v-card-text>Address: {{currentTicket.creator.company.address}}</v-card-text>
+            <v-card-text>
+              <div>Name: {{currentTicket.creator.company.name}}</div>
+              <div>Country: {{currentTicket.creator.company.country}}</div>
+              <div>City: {{currentTicket.creator.company.city}}</div>
+              <div>Address: {{currentTicket.creator.company.address}}</div>
+            </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="4">
-          <v-card outlined min-height="275">
+          <v-card outlined min-height="200">
             <v-card-title>User details</v-card-title>
-            <v-card-text>Firstname: {{currentTicket.creator.first_name}}</v-card-text>
-            <v-card-text>surname: {{currentTicket.creator.surname}}</v-card-text>
-            <v-card-text>email: {{currentTicket.creator.username}}</v-card-text>
+            <v-card-text>
+              <div>Firstname: {{currentTicket.creator.first_name}}</div>
+              <div>surname: {{currentTicket.creator.surname}}</div>
+              <div>email: {{currentTicket.creator.username}}</div>
+            </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="4">
+        <v-col class="text-right" cols="4">
           <v-btn @click="saveTicket" depressed large color="primary">Save</v-btn>
         </v-col>
       </v-row>
@@ -88,7 +92,7 @@
 
 <script>
 import Comment from "../models/comment";
-import EditTicket from '../models/editTicket';
+import EditTicket from "../models/editTicket";
 
 export default {
   data() {
@@ -105,15 +109,11 @@ export default {
   },
   methods: {
     saveTicket() {
-      this.ticket.ticketid = this.currentTicket.id,
-      this.ticket.agent = this.currentUser.account.id,
-      this.ticket.status = this.currentTicket.status.name
-      if (
-        this.ticket.ticketid &&
-        this.ticket.agent &&
-        this.ticket.status
-      ) {
-      console.log(this.currentTicket);
+      (this.ticket.ticketid = this.currentTicket.id),
+        (this.ticket.agent = this.currentUser.account.id),
+        (this.ticket.status = this.currentTicket.status.name);
+      if (this.ticket.ticketid && this.ticket.agent && this.ticket.status) {
+        console.log(this.currentTicket);
 
         this.$store.dispatch("ticket/edit", this.ticket).then(
           response => {
@@ -128,8 +128,8 @@ export default {
       }
     },
     addComment() {
-      this.comment.userid = this.currentUser.account.id,
-      this.comment.ticketid = this.currentTicket.id
+      (this.comment.userid = this.currentUser.account.id),
+        (this.comment.ticketid = this.currentTicket.id);
       if (
         this.comment.userid &&
         this.comment.ticketid &&

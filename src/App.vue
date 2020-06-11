@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <nav-bar v-if="currentUser" />
+    <nav-bar v-if="currentUser" />
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -9,12 +9,11 @@
 
 <script>
 import NavBar from "../src/components/Navbar.vue";
-//import Footer from "../src/components/Footer.vue";
 export default {
   name: "App",
 
   components: {
-    NavBar,
+    NavBar
     //Footer
   },
 
@@ -23,9 +22,11 @@ export default {
       return this.$store.state.auth.account;
     },
 
-    data: () => ({
-      
-    })
+    data: () => ({})
   }
 };
 </script>
+
+<style>
+
+</style>

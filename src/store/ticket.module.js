@@ -13,18 +13,27 @@ export const ticket = {
     actions: {
         async all({ commit }) {
             await TicketService.getAllTickets()
-            .then(response => {
-                commit('setTickets', response);
-            })
+                .then(response => {
+                    commit('setTickets', response);
+                })
                 .catch(error => {
                     console.log(error);
                 })
         },
         async getByAccountId({ commit }, id) {
             await TicketService.getAllTicketsByAccountId(id)
-            .then(response => {
-                commit('setTickets', response);
-            })
+                .then(response => {
+                    commit('setTickets', response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        async getByCompanyId({ commit }, id) {
+            await TicketService.getAllTicketsByCompanyId(id)
+                .then(response => {
+                    commit('setTickets', response);
+                })
                 .catch(error => {
                     console.log(error);
                 })

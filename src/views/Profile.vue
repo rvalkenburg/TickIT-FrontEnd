@@ -5,18 +5,22 @@
         <v-col cols="6">
           <v-card outlined>
             <v-card-title>User details</v-card-title>
-            <v-card-text>Name: {{currentUser.account.first_name}}</v-card-text>
-            <v-card-text>Address: {{currentUser.account.surname}}</v-card-text>
-            <v-card-text>City: {{currentUser.account.username}}</v-card-text>
-            <v-card-text>Country: {{currentUser.account.username}}</v-card-text>
+            <v-card-text>
+              <div>Firstname: {{currentUser.account.first_name}}</div>
+              <div>Surname: {{currentUser.account.surname}}</div>
+              <div>username: {{currentUser.account.username}}</div>
+            </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="6">
           <v-card outlined>
             <v-card-title>User details</v-card-title>
-            <v-card-text>Firstname: {{currentUser.account.first_name}}</v-card-text>
-            <v-card-text>surname: {{currentUser.account.surname}}</v-card-text>
-            <v-card-text>email: {{currentUser.account.username}}</v-card-text>
+            <v-card-text>
+                            <div>Firstname: {{currentUser.account.first_name}}</div>
+              <div>Surname: {{currentUser.account.surname}}</div>
+              <div>username: {{currentUser.account.username}}</div>
+            </v-card-text>
+
           </v-card>
         </v-col>
       </v-row>
@@ -52,3 +56,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>

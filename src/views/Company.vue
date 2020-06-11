@@ -5,7 +5,7 @@
         <v-col cols="5">
           <NameFilter />
         </v-col>
-        <v-col cols="7">
+        <v-col class="text-right" cols="7">
           <CreateCompany />
         </v-col>
       </v-row>

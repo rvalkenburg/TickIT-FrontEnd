@@ -24,6 +24,16 @@ class UserService {
                 console.log(error);
             })
     }
+    async getUsersByCompany(id) {
+        return await axios.get(API_URL + 'company/' + id, {
+            headers: authHeader(),
+        }).then(response => {
+            return response.data
+        })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 }
 
 export default new UserService();

@@ -8,7 +8,7 @@
         <v-col cols="5">
           <CompanyFilter />
         </v-col>
-        <v-col cols="2">
+        <v-col class="text-right" cols="2">
           <CreateTicket />
         </v-col>
       </v-row>
@@ -46,8 +46,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.currentUser);
-
     if (!this.currentUser) {
       this.$router.push("/home");
     }

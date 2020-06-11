@@ -6,6 +6,7 @@ import Tickets from '../views/TicketsAdmin.vue'
 import EditTicket from '../views/EditTicket.vue'
 import Company from '../views/Company.vue'
 import isAdmin from '../router/role.js'
+import EditCompany from '../views/EditCompany.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,14 @@ const routes = [
     path: '/tickets/edit',
     name: 'editTicket',
     component: EditTicket,
+    meta: {
+      is_Admin: true,
+    }
+  },
+  {
+    path: '/company/edit',
+    name: 'editCompany',
+    component: EditCompany,
     meta: {
       is_Admin: true,
     }

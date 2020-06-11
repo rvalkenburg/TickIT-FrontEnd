@@ -22,10 +22,14 @@ class AuthService {
   }
 
   register(account) {
-    return axios.post(API_URL + 'signup', {
+    return axios.post(API_URL + 'register', {
       username: account.username,
-      email: account.email,
-      password: account.password
+      firstname: account.firstname,
+      surname: account.surname,
+      password: account.password,
+      company: account.company,
+    }).then(Account => {
+      console.log(Account)
     });
   }
 }

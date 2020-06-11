@@ -37,6 +37,9 @@ export const company = {
                     console.log(error);
                 })
         },
+        selectCompany({commit}, company){
+            commit('setCompany', company);
+        }
     },
     mutations: {
         setCompany(state, company) {

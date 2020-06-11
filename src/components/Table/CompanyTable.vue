@@ -12,7 +12,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      dialog: false,
+      dialog: false
     };
   },
   methods: {
@@ -22,7 +22,20 @@ export default {
       }
       return value.toLowerCase().includes(this.nameFilterValue.toLowerCase());
     },
-    editCompany() {}
+    editCompany(value) {
+      this.$store.dispatch("company/selectCompany", value).then(
+        response => {
+          if (response == null) {
+            this.$router.push({
+              name: "editCompany"
+            });
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   },
 
   computed: {

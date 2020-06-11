@@ -15,10 +15,6 @@ export default {
       dialog: false
     };
   },
-  created() {
-    this.$store.dispatch("user/getAllAgents");
-    this.$store.dispatch("user/getAllUsers");
-  },
   methods: {
     editTicket(value) {
       this.$store.dispatch("ticket/selectTicket", value).then(
@@ -66,7 +62,6 @@ export default {
   computed: {
     ...mapGetters({
       tickets: "ticket/tickets",
-      agents: "user/agents",
       statusFilterValue: "filter/getStatus",
       companyFilterValue: "filter/getCompany",
       nameFilterValue: "filter/getName",

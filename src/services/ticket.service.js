@@ -18,7 +18,16 @@ class TicketService {
         return await axios.get(API_URL + 'account/' + id , {
             headers: authHeader(),
         }).then(response => {
-            console.log(response.data)
+            return response.data;
+        })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    async getAllTicketsByCompanyId(id) {
+        return await axios.get(API_URL + 'company/' + id , {
+            headers: authHeader(),
+        }).then(response => {
             return response.data;
         })
             .catch(error => {

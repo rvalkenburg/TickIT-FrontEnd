@@ -12,7 +12,7 @@
           <v-row>
             <v-col cols="12" sm="6">
               <v-select
-                item-text="text"
+                item-text="name"
                 item-value="id"
                 :items="companies"
                 v-model="ticket.company"
@@ -37,7 +37,7 @@
             <v-col cols="12" sm="6">
               <v-select
                 :items="agents"
-                item-text="first_name"
+                item-text="account.first_name"
                 label="Agent"
                 item-value="id"
                 v-model="ticket.agent"
@@ -68,17 +68,18 @@ export default {
     ticket: new Ticket(),
     dialog: false,
     enabled: true,
-    companies: [{ text: "Contoso", id: "2" }]
   }),
   created() {
     this.$store.dispatch("user/getAllAgents");
     this.$store.dispatch("user/getAllUsers");
+    this.$store.dispatch("company/all");
   },
 
   computed: {
     ...mapGetters({
       agents: "user/agents",
-      users: "user/users"
+      users: "user/users",
+      companies: "company/companies"
     })
   },
   methods: {
@@ -109,8 +110,7 @@ export default {
           }
         );
       }
-    },
-
+    }
   }
 };
 </script>
