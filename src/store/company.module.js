@@ -13,7 +13,7 @@ export const company = {
         async all({ commit }) {
             await CompanyService.getAllCompanies()
                 .then(response => {
-                    commit('setCompanies', response);
+                    commit('setCompanies', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -22,7 +22,7 @@ export const company = {
         async getById({ commit }, id) {
             await CompanyService.getCompany(id)
                 .then(response => {
-                    commit('setCompany', response);
+                    commit('setCompany', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -30,8 +30,8 @@ export const company = {
         },
         async create({ commit }, company) {
             await CompanyService.createCompany(company)
-                .then(() => {
-                    commit('setCreatedCompany', company);
+                .then(Response => {
+                    commit('setCreatedCompany', Response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -55,6 +55,10 @@ export const company = {
     getters: {
         company: state => state.company,
         companies: state => state.companies,
-        newCompany: state => state.newCompany
+        newCompany: state => state.newCompany,
+        getUsersByCompany: (state) => (id) => {
+            console.log(state.users)
+            return state.companies.filter(u => u.company.id == id);
+        }
     },
 };

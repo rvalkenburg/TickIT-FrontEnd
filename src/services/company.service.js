@@ -7,22 +7,12 @@ class CompanyService {
     async getAllCompanies() {
         return await axios.get(API_URL + '/all', {
             headers: authHeader(),
-        }).then(response => {
-            return response.data;
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async getCompany(id) {
         return await axios.get(API_URL + "/" + id, {
             headers: authHeader(),
-        }).then(response => {
-            return response.data;
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async createCompany(newCompany) {
         return await axios.post(API_URL, {
@@ -33,12 +23,6 @@ class CompanyService {
         }, {
             headers: authHeader()
         })
-            .then(response => {
-                return response
-            }).catch(error => {
-                console.log(error);
-            })
-            ;
     }
 }
 export default new CompanyService();

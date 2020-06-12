@@ -11,7 +11,7 @@ export const comment = {
         async create({ commit }, comment) {
             await CommentService.addComment(comment)
                 .then(response => {
-                    commit('newComment', response);
+                    commit('newComment', response.data);
                 })
                 .catch(error => {
                     console.log(error);

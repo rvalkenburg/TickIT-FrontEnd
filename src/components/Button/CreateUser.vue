@@ -5,7 +5,7 @@
     </template>
     <v-card>
       <v-card-title>
-        <span class="headline">Create company</span>
+        <span class="headline">Create user</span>
       </v-card-title>
       <v-card-text>
         <v-container>
@@ -49,13 +49,16 @@ export default {
   methods: {
     createTicket() {
       console.log(this.account);
+      this.account.company = this.currentCompany.id
       if (
         this.account.username &&
         this.account.firstname &&
         this.account.surname &&
+        this.account.company &&
         this.account.password
       ) {
-        this.$store.dispatch("user/create", this.account).then(
+
+        this.$store.dispatch("auth/register", this.account).then(
           () => {
             this.dialog = false;
           },
@@ -65,6 +68,12 @@ export default {
         );
       }
     }
+  },
+  computed: {
+      currentCompany() {
+      return this.$store.getters["company/company"];
+    }
   }
+
 };
 </script>

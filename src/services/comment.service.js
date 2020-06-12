@@ -12,12 +12,6 @@ class CommentService {
         }, {
             headers: authHeader()
         })
-            .then(response => {
-                return response.data
-            }).catch(error => {
-                console.log(error);
-            })
-            ;
     }
 }
 export default new CommentService();

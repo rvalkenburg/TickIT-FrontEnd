@@ -14,7 +14,7 @@ export const ticket = {
         async all({ commit }) {
             await TicketService.getAllTickets()
                 .then(response => {
-                    commit('setTickets', response);
+                    commit('setTickets', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -23,7 +23,7 @@ export const ticket = {
         async getByAccountId({ commit }, id) {
             await TicketService.getAllTicketsByAccountId(id)
                 .then(response => {
-                    commit('setTickets', response);
+                    commit('setTickets', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -32,7 +32,7 @@ export const ticket = {
         async getByCompanyId({ commit }, id) {
             await TicketService.getAllTicketsByCompanyId(id)
                 .then(response => {
-                    commit('setTickets', response);
+                    commit('setTickets', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -41,7 +41,7 @@ export const ticket = {
         async create({ commit }, newTicket) {
             await TicketService.createTicket(newTicket)
                 .then(response => {
-                    commit('newTicket', response);
+                    commit('newTicket', response.data);
                 }).catch(error => {
                     console.log(error);
                 })
@@ -50,7 +50,7 @@ export const ticket = {
             console.log(newTicket)
             await TicketService.editTicket(newTicket)
                 .then(response => {
-                    commit('newTicket', response);
+                    commit('newTicket', response.data);
                 }).catch(error => {
                     console.log(error);
                 })

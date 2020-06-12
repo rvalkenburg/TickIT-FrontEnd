@@ -17,22 +17,12 @@ class UserService {
     async getAllAgents() {
         return await axios.get(API_URL + 'agents', {
             headers: authHeader(),
-        }).then(response => {
-            return response.data
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async getUsersByCompany(id) {
         return await axios.get(API_URL + 'company/' + id, {
             headers: authHeader(),
-        }).then(response => {
-            return response.data
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
 }
 

@@ -12,7 +12,7 @@ export const user = {
         async getAllAgents({ commit }) {
             await UserService.getAllAgents()
                 .then(response => {
-                    commit('setAgents', response);
+                    commit('setAgents', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -30,7 +30,7 @@ export const user = {
         async getByCompany({ commit }, id) {
             await UserService.getUsersByCompany(id)
                 .then(response => {
-                    commit('setUsers', response);
+                    commit('setUsers', response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -47,6 +47,8 @@ export const user = {
             state.agents = agents;
         },
         setUsers(state, users) {
+            console.log(users)
+
             state.users = users;
         }
     },

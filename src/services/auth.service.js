@@ -28,9 +28,7 @@ class AuthService {
       surname: account.surname,
       password: account.password,
       company: account.company,
-    }).then(Account => {
-      console.log(Account)
-    });
+    })
   }
 }
 

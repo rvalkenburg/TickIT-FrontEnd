@@ -7,32 +7,17 @@ class TicketService {
     async getAllTickets() {
         return await axios.get(API_URL + 'all', {
             headers: authHeader(),
-        }).then(response => {
-            return response.data;
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async getAllTicketsByAccountId(id) {
         return await axios.get(API_URL + 'account/' + id , {
             headers: authHeader(),
-        }).then(response => {
-            return response.data;
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async getAllTicketsByCompanyId(id) {
         return await axios.get(API_URL + 'company/' + id , {
             headers: authHeader(),
-        }).then(response => {
-            return response.data;
         })
-            .catch(error => {
-                console.log(error);
-            })
     }
     async createTicket(newTicket) {
         return await axios.post(API_URL + 'create', {
@@ -44,12 +29,6 @@ class TicketService {
         }, {
             headers: authHeader()
         })
-            .then(response => {
-                return response.data
-            }).catch(error => {
-                console.log(error);
-            })
-            ;
     }
     async editTicket(ticket) {
         console.log(ticket)
@@ -61,12 +40,6 @@ class TicketService {
         }, {
             headers: authHeader()
         })
-            .then(response => {
-                return response.data
-            }).catch(error => {
-                console.log(error);
-            })
-            ;
     }
 }
 export default new TicketService();

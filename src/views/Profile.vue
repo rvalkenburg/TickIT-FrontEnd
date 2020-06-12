@@ -16,11 +16,10 @@
           <v-card outlined>
             <v-card-title>User details</v-card-title>
             <v-card-text>
-                            <div>Firstname: {{currentUser.account.first_name}}</div>
+              <div>Firstname: {{currentUser.account.first_name}}</div>
               <div>Surname: {{currentUser.account.surname}}</div>
               <div>username: {{currentUser.account.username}}</div>
             </v-card-text>
-
           </v-card>
         </v-col>
       </v-row>

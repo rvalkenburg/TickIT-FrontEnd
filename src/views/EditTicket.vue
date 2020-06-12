@@ -72,10 +72,10 @@
         <v-col cols="8">
           <v-card outlined>
             <v-card-title>Previous comment</v-card-title>
-            <v-container>
+            <v-container v-for="comment in currentTicket.comments"
+                v-bind:key="comment.id">
+                <div>{{comment.account.username}}</div>
               <v-textarea
-                v-for="comment in currentTicket.comments"
-                v-bind:key="comment.id"
                 name="input-7-1"
                 auto-grow
                 outlined

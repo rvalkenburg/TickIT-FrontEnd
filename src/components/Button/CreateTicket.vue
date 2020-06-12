@@ -39,7 +39,7 @@
                 :items="agents"
                 item-text="account.first_name"
                 label="Agent"
-                item-value="id"
+                item-value="account.id"
                 v-model="ticket.agent"
               ></v-select>
             </v-col>
@@ -85,7 +85,7 @@ export default {
   methods: {
     filterUsers: function() {
       if (!this.ticket.company) {
-        this.enabled = true;
+        this.enabled = false;
         return this.users;
       }
       this.enabled = false;

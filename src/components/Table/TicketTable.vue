@@ -78,7 +78,7 @@ export default {
           value: "title",
           filter: this.nameFilter
         },
-        { text: "Status", value: "status.name", filter: this.statusFilter },
+        { text: "Status", value: "status", filter: this.statusFilter },
         {
           text: "Agent",
           value: "agent.first_name",
