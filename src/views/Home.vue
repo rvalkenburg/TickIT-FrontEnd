@@ -9,7 +9,7 @@
     </div>
     <v-parallax
       dark
-      src="https://www.ecopetit.cat/wpic/mpic/50-508704_1929x1089-faded-wallpaper-hd-data-id-41731-data.jpg"
+      src="../images/background.jpg"
     >
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
@@ -42,7 +42,7 @@
       <v-flex xl6>
         <div>
           <v-img
-            src="https://external-preview.redd.it/AOJtwr7lW8E4k5rsua3rPoky1ySO_34UkAVmm6PuVpM.jpg?auto=webp&s=2645657b4d14ff6f7321db22bcb96f4652876af8"
+            src="../images/vue_logo.jpg"
             aspect-ratio="3"
             contain
           ></v-img>

@@ -15,8 +15,8 @@ export default {
     return {
       status: [
         { text: "All", value: null },
-        { text: "Open", value: "Open" },
-        { text: "Closed", value: "Closed" }
+        { text: "Open", value: "OPEN" },
+        { text: "Closed", value: "CLOSED" }
       ],
       statusFilterValue: null
     };

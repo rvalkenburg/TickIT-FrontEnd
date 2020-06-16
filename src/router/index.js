@@ -7,6 +7,8 @@ import EditTicket from '../views/EditTicket.vue'
 import Company from '../views/Company.vue'
 import isAdmin from '../router/role.js'
 import EditCompany from '../views/EditCompany.vue'
+import Statistics from '../views/Statistics.vue'
+import UserTickets from '../views/TicketsUser.vue'
 
 Vue.use(VueRouter)
 
@@ -34,11 +36,27 @@ const routes = [
     }
   },
   {
+    path: '/stats',
+    name: 'statistics',
+    component: Statistics,
+    meta: {
+      is_Admin: true,
+    }
+  },
+  {
+    path: '/tickets/user',
+    name: 'userTickets',
+    component: UserTickets,
+    meta: {
+      is_Admin: false,
+    }
+  },
+  {
     path: '/tickets/edit',
     name: 'editTicket',
     component: EditTicket,
     meta: {
-      is_Admin: true,
+      is_Admin: false,
     }
   },
   {

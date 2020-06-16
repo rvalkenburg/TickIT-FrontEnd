@@ -74,5 +74,8 @@ export const ticket = {
     getters: {
         tickets: state => state.tickets,
         selectedTicket: state => state.selectedTicket,
-    },
+        openTickets: (state) => {
+            return state.tickets.filter(u => u.tickets.status == "OPEN")
+        },
+    }
 };

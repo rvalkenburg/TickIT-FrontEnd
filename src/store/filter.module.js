@@ -10,7 +10,6 @@ export const filter = {
 
     actions: {
         filterAgent({commit}, agent){
-            console.log(agent)
             commit('setAgent', agent);
         },
         filterCompnay({commit}, company){

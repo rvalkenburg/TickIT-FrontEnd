@@ -2,7 +2,7 @@
   <v-app>
     <v-container>
       <v-row color="grey" dense>
-        <v-col cols="4">
+        <v-col cols="3">
           <v-card outlined min-height="200">
             <v-card-title>Company details</v-card-title>
             <v-card-text>
@@ -13,26 +13,34 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="3">
           <v-card outlined min-height="200">
             <v-card-title>User details</v-card-title>
             <v-card-text>
-              <div>Firstname: {{currentTicket.creator.first_name}}</div>
+              <div>Description: {{currentTicket.creator.first_name}}</div>
               <div>surname: {{currentTicket.creator.surname}}</div>
               <div>email: {{currentTicket.creator.username}}</div>
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col class="text-right" cols="4">
+        <v-col cols="4">
+          <v-card outlined min-height="200">
+            <v-card-title>Description</v-card-title>
+            <v-card-text>
+              <div>Description: {{currentTicket.description}}</div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col class="text-right" cols="2">
           <v-btn @click="saveTicket" depressed large color="primary">Save</v-btn>
         </v-col>
       </v-row>
-      <v-row dense>
+      <v-row dense v-if="currentTicket.agent != null">
         <v-col cols="4">
           <v-card outlined>
             <v-card-title>Ticket details</v-card-title>
             <v-container>
-              <v-select :items="status" v-model="currentTicket.status.name" outlined label="Status"></v-select>
+              <v-select :items="status" v-model="currentTicket.status" outlined label="Status"></v-select>
             </v-container>
           </v-card>
         </v-col>
@@ -51,7 +59,7 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="8">
+        <v-col cols="10">
           <v-card outlined>
             <v-card-title>Add comment</v-card-title>
             <v-container>
@@ -72,16 +80,9 @@
         <v-col cols="8">
           <v-card outlined>
             <v-card-title>Previous comment</v-card-title>
-            <v-container v-for="comment in currentTicket.comments"
-                v-bind:key="comment.id">
-                <div>{{comment.account.username}}</div>
-              <v-textarea
-                name="input-7-1"
-                auto-grow
-                outlined
-                readonly
-                v-model="comment.comment"
-              ></v-textarea>
+            <v-container v-for="comment in currentTicket.comments" v-bind:key="comment.id">
+              <div>{{comment.account.username}}</div>
+              <v-textarea name="input-7-1" auto-grow outlined readonly v-model="comment.comment"></v-textarea>
             </v-container>
           </v-card>
         </v-col>

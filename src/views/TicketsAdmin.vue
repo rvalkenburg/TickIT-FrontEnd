@@ -45,11 +45,6 @@ export default {
       return this.$store.state.auth.account;
     }
   },
-  mounted() {
-    if (!this.currentUser) {
-      this.$router.push("/home");
-    }
-  },
   created() {
     this.$store.dispatch("ticket/all");
   },

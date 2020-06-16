@@ -2,7 +2,7 @@
   <v-select
     @change="filterOnAgent()"
     :items="agents"
-    item-text="account.first_name"
+    item-text="account.username"
     clearable
     v-model="agentFilterValue"
     label="Agent"

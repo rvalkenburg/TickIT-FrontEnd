@@ -47,8 +47,6 @@ export const user = {
             state.agents = agents;
         },
         setUsers(state, users) {
-            console.log(users)
-
             state.users = users;
         }
     },

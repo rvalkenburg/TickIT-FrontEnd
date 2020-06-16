@@ -81,7 +81,7 @@ export default {
         { text: "Status", value: "status", filter: this.statusFilter },
         {
           text: "Agent",
-          value: "agent.first_name",
+          value: "agent.username",
           filter: this.agentFilter,
           sortable: true
         },

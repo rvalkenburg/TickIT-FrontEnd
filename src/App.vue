@@ -11,18 +11,14 @@
 import NavBar from "../src/components/Navbar.vue";
 export default {
   name: "App",
-
   components: {
     NavBar
-    //Footer
   },
 
   computed: {
     currentUser() {
       return this.$store.state.auth.account;
     },
-
-    data: () => ({})
   }
 };
 </script>
