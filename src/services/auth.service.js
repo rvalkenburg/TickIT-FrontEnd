@@ -4,10 +4,8 @@ const API_URL = 'http://localhost:1338/auth/';
 
 class AuthService {
   login(account) {
-    console.log(account);
-
-    return axios
-      .post(API_URL + 'login', {
+    console.log(account)
+    return axios.post(API_URL + 'login', {
         email: account.username,
         password: account.password
       })
@@ -15,7 +13,6 @@ class AuthService {
         if (response.data.accessToken) {
           localStorage.setItem('account', JSON.stringify(response.data));
         }
-
         return response.data;
       });
   }
@@ -25,11 +22,13 @@ class AuthService {
   }
 
   register(account) {
-    return axios.post(API_URL + 'signup', {
+    return axios.post(API_URL + 'register', {
       username: account.username,
-      email: account.email,
-      password: account.password
-    });
+      firstname: account.firstname,
+      surname: account.surname,
+      password: account.password,
+      company: account.company,
+    })
   }
 }
 
