@@ -5,7 +5,7 @@ import Profile from '../views/Profile.vue'
 import Tickets from '../views/TicketsAdmin.vue'
 import EditTicket from '../views/EditTicket.vue'
 import Company from '../views/Company.vue'
-import isAdmin from '../router/role.js'
+//import isAdmin from '../router/role.js'
 import EditCompany from '../views/EditCompany.vue'
 import Statistics from '../views/Statistics.vue'
 import UserTickets from '../views/TicketsUser.vue'
@@ -84,26 +84,26 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-  const publicPages = ['/home'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('account');
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ['/home'];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('account');
 
-  if (authRequired) {
-    if (loggedIn) {
-      if (to.matched.some(record => record.meta.is_Admin == true && isAdmin())) {
-        next();
-      }
-      if (to.matched.some(record => record.meta.is_Admin == false)) {
-        next();
-      }
-    } else {
-      next('/home')
-    }
-  }
-  else {
-    next()
-  }
-});
+//   if (authRequired) {
+//     if (loggedIn) {
+//       if (to.matched.some(record => record.meta.is_Admin == true && isAdmin())) {
+//         next();
+//       }
+//       if (to.matched.some(record => record.meta.is_Admin == false)) {
+//         next();
+//       }
+//     } else {
+//       next('/home')
+//     }
+//   }
+//   else {
+//     next()
+//   }
+// });
 
 export default router
