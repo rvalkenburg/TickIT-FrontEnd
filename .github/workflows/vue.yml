@@ -17,13 +17,13 @@ jobs:
         with:
           node-version: 10.x
       - name: npm install, build
-      run: |
+        run: |
           yarn
           npm run build
       - name: run Lighthouse CI
         run: |
-        npm install -g @lhci/cli@0.3.x
-        lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed"
+          npm install -g @lhci/cli@0.3.x
+          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed"
         
   build-docker:
     runs-on: ubuntu-latest
