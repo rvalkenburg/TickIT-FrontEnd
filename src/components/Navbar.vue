@@ -29,13 +29,17 @@
 </template>
 
 <script>
+import {mdiAccount} from '@mdi/js'
+
 export default {
   data() {
     return {
+      accountFont: mdiAccount,
+
       items: [
         {
           title: "Profile",
-          icon: "mdi-account",
+          icon: mdiAccount,
           route: "/profile",
           shared: true
         },
