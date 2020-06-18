@@ -11,12 +11,6 @@
       dark
       src="../images/vue_logo.jpg"
     >
-      <v-row align="center" justify="center">
-        <v-col class="text-center" cols="12">
-          <h1 class="display-1 font-weight-thin mb-4">TickIT</h1>
-          <h4 class="subheading">manage your tickets!</h4>
-        </v-col>
-      </v-row>
     </v-parallax>
     <v-layout wrap row class="mt-auto">
       <v-flex xl6>
