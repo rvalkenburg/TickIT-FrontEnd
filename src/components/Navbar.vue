@@ -4,7 +4,7 @@
       <v-list-item class="px-4 background">
         <v-list-item-avatar>
           <v-img
-            src="../images/vuelogo.png"
+            src="../assets/vuelogo.png"
           ></v-img>
         </v-list-item-avatar>
         <v-list-item-title>{{currentUser.account.first_name}}</v-list-item-title>

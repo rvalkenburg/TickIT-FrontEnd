@@ -9,7 +9,7 @@
     </div>
     <v-parallax
       dark
-      src="../images/vue_logo.jpg"
+      src="../assets/vue_logo.jpg"
     >
     </v-parallax>
     <v-layout wrap row class="mt-auto">
@@ -36,7 +36,7 @@
       <v-flex xl6>
         <div>
           <v-img
-            src="../images/background.jpg"
+            src="../assets/background.jpg"
             aspect-ratio="3"
             contain
           ></v-img>
