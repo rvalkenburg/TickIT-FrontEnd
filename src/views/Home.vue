@@ -9,7 +9,7 @@
     </div>
     <v-parallax
       dark
-      src="../images/background.jpg"
+      src="../images/vue_logo.jpg"
     >
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
@@ -42,7 +42,7 @@
       <v-flex xl6>
         <div>
           <v-img
-            src="../images/vue_logo.jpg"
+            src="../images/background.jpg"
             aspect-ratio="3"
             contain
           ></v-img>
