@@ -57,7 +57,6 @@ export const company = {
         companies: state => state.companies,
         newCompany: state => state.newCompany,
         getUsersByCompany: (state) => (id) => {
-            console.log(state.users)
             return state.companies.filter(u => u.company.id == id);
         }
     },

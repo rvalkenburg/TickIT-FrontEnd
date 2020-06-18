@@ -119,7 +119,6 @@ export default {
         this.$store.dispatch("ticket/edit", this.ticket).then(
           response => {
             console.log(response);
-            //this.$store.dispatch("ticket/all");
             this.dialog = false;
           },
           error => {

@@ -4,7 +4,7 @@
       <v-list-item class="px-4 background">
         <v-list-item-avatar>
           <v-img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png"
+            src="../images/vuelogo.png"
           ></v-img>
         </v-list-item-avatar>
         <v-list-item-title>{{currentUser.account.first_name}}</v-list-item-title>
@@ -91,8 +91,5 @@ export default {
 <style>
 .background {
   background-color: rgb(146, 146, 146);
-}
-.itemlist {
-  background-color: hotpink;
 }
 </style>
