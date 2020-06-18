@@ -7,10 +7,7 @@
         <Login />
       </v-app-bar>
     </div>
-    <v-parallax
-      dark
-      src="../images/vue_logo.jpg"
-    >
+    <v-parallax dark src="../images/vue_logo.jpg">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 class="display-1 font-weight-thin mb-4">TickIT</h1>
@@ -41,11 +38,7 @@
       </v-flex>
       <v-flex xl6>
         <div>
-          <v-img
-            src="../images/background.jpg"
-            aspect-ratio="3"
-            contain
-          ></v-img>
+          <v-img src="../images/background.jpg" aspect-ratio="3" contain></v-img>
         </div>
       </v-flex>
     </v-layout>
@@ -65,6 +58,16 @@ export default {
   components: {
     Footer,
     Login
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/profile");
+    }
   }
 };
 </script>
