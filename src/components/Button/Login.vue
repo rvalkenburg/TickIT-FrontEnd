@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-btn color="black" v-on="on">
+      <v-btn color="white" v-on="on" text="Login">
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </template>
