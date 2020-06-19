@@ -3,6 +3,7 @@
     <template v-slot:activator="{ on }">
       <v-btn color="white" v-on="on" text="Login">
         <v-icon>mdi-login</v-icon>
+        Login
       </v-btn>
     </template>
     <v-card>
