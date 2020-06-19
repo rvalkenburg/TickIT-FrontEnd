@@ -7,11 +7,7 @@
         <Login />
       </v-app-bar>
     </div>
-    <v-parallax
-      dark
-      src="../assets/vue_logo.jpg"
-    >
-    </v-parallax>
+    <v-parallax dark src="../assets/vue_logo.jpg"></v-parallax>
     <v-layout wrap row class="mt-auto">
       <v-flex xl6>
         <v-card height="100%" outlined color="white">
@@ -35,11 +31,7 @@
       </v-flex>
       <v-flex xl6>
         <div>
-          <v-img
-            src="../assets/background.jpg"
-            aspect-ratio="3"
-            contain
-          ></v-img>
+          <v-img src="../assets/background.jpg" aspect-ratio="3" contain></v-img>
         </div>
       </v-flex>
     </v-layout>
@@ -56,6 +48,9 @@ import Footer from "@/components/Footer.vue";
 import Login from "@/components/Button/Login.vue";
 
 export default {
+  metaInfo: {
+    description: "Manage your tickets"
+  },
   components: {
     Footer,
     Login
