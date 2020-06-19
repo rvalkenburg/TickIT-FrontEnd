@@ -1,21 +1,20 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-
-const API_URL = 'http://localhost:1338/company';
+import { config } from './config'
 
 class CompanyService {
     async getAllCompanies() {
-        return await axios.get(API_URL + '/all', {
+        return await axios.get(config.apiUrl + '/company/all', {
             headers: authHeader(),
         })
     }
     async getCompany(id) {
-        return await axios.get(API_URL + "/" + id, {
+        return await axios.get(config.apiUrl + "/company/" + id, {
             headers: authHeader(),
         })
     }
     async createCompany(newCompany) {
-        return await axios.post(API_URL, {
+        return await axios.post(config.apiUrl + "/company", {
             name: newCompany.name,
             address: newCompany.address,
             city: newCompany.city,

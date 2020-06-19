@@ -1,11 +1,10 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-
-const API_URL = 'http://localhost:1338/comment/';
+import { config } from './config'
 
 class CommentService {
     async addComment(comment) {
-        return await axios.post(API_URL + 'create', {
+        return await axios.post(config.apiUrlL + '/comment/create', {
             ticket: comment.ticketid,
             user: comment.userid,
             comment: comment.comment,

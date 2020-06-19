@@ -34,8 +34,6 @@ import {mdiAccount} from '@mdi/js'
 export default {
   data() {
     return {
-      accountFont: mdiAccount,
-
       items: [
         {
           title: "Profile",

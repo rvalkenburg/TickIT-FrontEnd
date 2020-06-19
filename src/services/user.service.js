@@ -1,11 +1,10 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-
-const API_URL = 'http://localhost:1338/user/';
+import { config } from './config'
 
 class UserService {
     async getAllUsers() {
-        return await axios.get(API_URL + 'users', {
+        return await axios.get(config.apiUrl + '/user/users', {
             headers: authHeader(),
         }).then(response => {
             return response.data
@@ -15,12 +14,12 @@ class UserService {
             })
     }
     async getAllAgents() {
-        return await axios.get(API_URL + 'agents', {
+        return await axios.get(config.apiUrl + '/user/agents', {
             headers: authHeader(),
         })
     }
     async getUsersByCompany(id) {
-        return await axios.get(API_URL + 'company/' + id, {
+        return await axios.get(config.apiUrl + '/user/company/' + id, {
             headers: authHeader(),
         })
     }
