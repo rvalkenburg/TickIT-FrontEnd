@@ -17,7 +17,19 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
-
+    meta: {
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
+    }
   },
   {
     path: '/profile',
@@ -25,6 +37,18 @@ const routes = [
     component: Profile,
     meta: {
       is_Admin: false,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
+
     }
   },
   {
@@ -33,6 +57,17 @@ const routes = [
     component: Tickets,
     meta: {
       is_Admin: true,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   },
   {
@@ -41,6 +76,17 @@ const routes = [
     component: Statistics,
     meta: {
       is_Admin: true,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   },
   {
@@ -49,6 +95,17 @@ const routes = [
     component: UserTickets,
     meta: {
       is_Admin: false,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   },
   {
@@ -57,6 +114,17 @@ const routes = [
     component: EditTicket,
     meta: {
       is_Admin: false,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   },
   {
@@ -65,6 +133,17 @@ const routes = [
     component: EditCompany,
     meta: {
       is_Admin: true,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   },
   {
@@ -73,6 +152,17 @@ const routes = [
     component: Company,
     meta: {
       is_Admin: true,
+      title: 'Home Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
     }
   }
 ]
