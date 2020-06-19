@@ -30,7 +30,6 @@ class TicketService {
         })
     }
     async editTicket(ticket) {
-        console.log(ticket)
         return await axios.put(config.apiUrl + '/ticket/edit', {
             status: ticket.status,
             ticket: ticket.ticketid,

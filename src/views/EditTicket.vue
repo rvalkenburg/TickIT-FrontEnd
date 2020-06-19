@@ -40,7 +40,7 @@
           <v-card outlined>
             <v-card-title>Ticket details</v-card-title>
             <v-container>
-              <v-select :items="status" v-model="currentTicket.status" outlined label="Status"></v-select>
+              <v-select :items="status" v-model="ticket.status" outlined label="Status"></v-select>
             </v-container>
           </v-card>
         </v-col>
@@ -112,7 +112,7 @@ export default {
     saveTicket() {
       (this.ticket.ticketid = this.currentTicket.id),
         (this.ticket.agent = this.currentUser.account.id),
-        (this.ticket.status = this.currentTicket.status.name);
+      console.log(this.ticket);
       if (this.ticket.ticketid && this.ticket.agent && this.ticket.status) {
         console.log(this.currentTicket);
 
