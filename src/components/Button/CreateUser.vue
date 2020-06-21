@@ -45,11 +45,10 @@ export default {
     enabled: true,
     companies: [{ text: "Contoso", id: "2" }]
   }),
-  
+
   methods: {
     createTicket() {
-      console.log(this.account);
-      this.account.company = this.currentCompany.id
+      this.account.company = this.currentCompany.id;
       if (
         this.account.username &&
         this.account.firstname &&
@@ -57,10 +56,13 @@ export default {
         this.account.company &&
         this.account.password
       ) {
-
         this.$store.dispatch("auth/register", this.account).then(
           () => {
             this.dialog = false;
+            this.$store.dispatch(
+              "company/getById",
+              this.currentCompany.id
+            );
           },
           error => {
             console.log(error);
@@ -70,10 +72,9 @@ export default {
     }
   },
   computed: {
-      currentCompany() {
+    currentCompany() {
       return this.$store.getters["company/company"];
     }
   }
-
 };
 </script>

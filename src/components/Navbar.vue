@@ -4,7 +4,7 @@
       <v-list-item class="px-4 background">
         <v-list-item-avatar>
           <v-img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png"
+            src="../assets/vuelogo.png"
           ></v-img>
         </v-list-item-avatar>
         <v-list-item-title>{{currentUser.account.first_name}}</v-list-item-title>
@@ -29,13 +29,15 @@
 </template>
 
 <script>
+import {mdiAccount} from '@mdi/js'
+
 export default {
   data() {
     return {
       items: [
         {
           title: "Profile",
-          icon: "mdi-account",
+          icon: mdiAccount,
           route: "/profile",
           shared: true
         },
@@ -91,8 +93,5 @@ export default {
 <style>
 .background {
   background-color: rgb(146, 146, 146);
-}
-.itemlist {
-  background-color: hotpink;
 }
 </style>

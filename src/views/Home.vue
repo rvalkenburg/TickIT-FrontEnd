@@ -7,14 +7,7 @@
         <Login />
       </v-app-bar>
     </div>
-    <v-parallax dark src="../images/vue_logo.jpg">
-      <v-row align="center" justify="center">
-        <v-col class="text-center" cols="12">
-          <h1 class="display-1 font-weight-thin mb-4">TickIT</h1>
-          <h4 class="subheading">manage your tickets!</h4>
-        </v-col>
-      </v-row>
-    </v-parallax>
+    <v-parallax dark src="../assets/vue_logo.jpg"></v-parallax>
     <v-layout wrap row class="mt-auto">
       <v-flex xl6>
         <v-card height="100%" outlined color="white">
@@ -38,7 +31,7 @@
       </v-flex>
       <v-flex xl6>
         <div>
-          <v-img src="../images/background.jpg" aspect-ratio="3" contain></v-img>
+          <v-img src="../assets/background.jpg" aspect-ratio="3" contain></v-img>
         </div>
       </v-flex>
     </v-layout>
@@ -55,6 +48,9 @@ import Footer from "@/components/Footer.vue";
 import Login from "@/components/Button/Login.vue";
 
 export default {
+  metaInfo: {
+    description: "Manage your tickets"
+  },
   components: {
     Footer,
     Login

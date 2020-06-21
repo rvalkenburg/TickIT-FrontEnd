@@ -92,7 +92,7 @@ export default {
   methods: {
     filterUsers: function() {
       if (!this.company) {
-        this.enabled = false;
+        this.enabled = true;
         return this.users;
       }
       this.enabled = false;

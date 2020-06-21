@@ -47,7 +47,6 @@ export const ticket = {
                 })
         },
         async edit({ commit }, newTicket) {
-            console.log(newTicket)
             await TicketService.editTicket(newTicket)
                 .then(response => {
                     commit('newTicket', response.data);

@@ -1,11 +1,10 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:1338/auth/';
+import { config } from './config'
 
 class AuthService {
   login(account) {
     console.log(account)
-    return axios.post(API_URL + 'login', {
+    return axios.post(config.apiUrl + '/auth/login', {
         email: account.username,
         password: account.password
       })
@@ -22,7 +21,7 @@ class AuthService {
   }
 
   register(account) {
-    return axios.post(API_URL + 'register', {
+    return axios.post(config.apiUrl + '/auth/register', {
       username: account.username,
       firstname: account.firstname,
       surname: account.surname,
