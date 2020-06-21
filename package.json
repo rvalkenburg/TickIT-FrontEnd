@@ -21,6 +21,7 @@
     "vuex-persistedstate": "^3.0.1"
   },
   "devDependencies": {
+    "@mdi/js": "^5.3.45",
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-plugin-router": "~4.3.0",
@@ -42,7 +43,6 @@
     "root": true,
     "env": {
       "node": true
-      
     },
     "extends": [
       "plugin:vue/essential",
