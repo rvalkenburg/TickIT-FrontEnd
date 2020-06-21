@@ -4,7 +4,7 @@ import { config } from './config'
 
 class UserService {
     async getAllUsers() {
-        return await axios.get(config.apiUrl + '/user/users', {
+        return await axios.get(config.apiUrl + '/user', {
             headers: authHeader(),
         }).then(response => {
             return response.data

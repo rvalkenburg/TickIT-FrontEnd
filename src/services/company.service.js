@@ -4,7 +4,7 @@ import { config } from './config'
 
 class CompanyService {
     async getAllCompanies() {
-        return await axios.get(config.apiUrl + '/company/all', {
+        return await axios.get(config.apiUrl + '/company', {
             headers: authHeader(),
         })
     }

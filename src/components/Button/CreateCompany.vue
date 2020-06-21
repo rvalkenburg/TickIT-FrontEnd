@@ -57,7 +57,6 @@ export default {
   }),
   methods: {
     createTicket() {
-      console.log(this.company);
       if (
         this.company.name &&
         this.company.country &&

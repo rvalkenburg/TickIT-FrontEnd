@@ -4,7 +4,7 @@ import { config } from './config'
 
 class TicketService {
     async getAllTickets() {
-        return await axios.get(config.apiUrl + '/ticket/all', {
+        return await axios.get(config.apiUrl + '/ticket', {
             headers: authHeader(),
         })
     }
@@ -19,7 +19,7 @@ class TicketService {
         })
     }
     async createTicket(newTicket) {
-        return await axios.post(config.apiUrl + '/ticket/create', {
+        return await axios.post(config.apiUrl + '/ticket', {
             company: newTicket.company,
             user: newTicket.user,
             agent: newTicket.agent,
@@ -30,7 +30,7 @@ class TicketService {
         })
     }
     async editTicket(ticket) {
-        return await axios.put(config.apiUrl + '/ticket/edit', {
+        return await axios.put(config.apiUrl + '/ticket', {
             status: ticket.status,
             ticket: ticket.ticketid,
             agent: ticket.agent,

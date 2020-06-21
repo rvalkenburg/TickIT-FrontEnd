@@ -61,7 +61,6 @@ export default {
           sortable: true
         },
         { text: "Address", value: "address" },
-        { text: "Number of tickets", value: "10" },
         { text: "Actions", value: "actions", sortable: false }
       ];
     }

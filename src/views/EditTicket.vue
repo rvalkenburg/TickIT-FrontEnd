@@ -48,12 +48,12 @@
           <v-card outlined>
             <v-card-title>Agent details</v-card-title>
             <v-container>
-              <v-text-field
-                v-model="currentTicket.agent.first_name"
-                label="Agent"
-                outlined
-                readonly
-              ></v-text-field>
+              <v-select
+                :items="agents"
+                v-model="ticket.agent"
+                item-value="account.id"
+                item-text="account.username"
+              ></v-select>
             </v-container>
           </v-card>
         </v-col>
@@ -83,6 +83,7 @@
             <v-container v-for="comment in currentTicket.comments" v-bind:key="comment.id">
               <div>{{comment.account.username}}</div>
               <v-textarea name="input-7-1" auto-grow outlined readonly v-model="comment.comment"></v-textarea>
+              <v-btn @click="removeComment(comment.id)" right>Remove comment</v-btn>
             </v-container>
           </v-card>
         </v-col>
@@ -92,6 +93,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Comment from "../models/comment";
 import EditTicket from "../models/editTicket";
 
@@ -108,23 +110,16 @@ export default {
       ]
     };
   },
+  created() {
+    this.$store.dispatch("user/getAllAgents");
+  },
+
   methods: {
     saveTicket() {
       (this.ticket.ticketid = this.currentTicket.id),
-        (this.ticket.agent = this.currentUser.account.id),
-      console.log(this.ticket);
+        (this.ticket.agent = this.currentUser.account.id);
       if (this.ticket.ticketid && this.ticket.agent && this.ticket.status) {
-        console.log(this.currentTicket);
-
-        this.$store.dispatch("ticket/edit", this.ticket).then(
-          response => {
-            console.log(response);
-            this.dialog = false;
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        this.$store.dispatch("ticket/edit", this.ticket);
       }
     },
     addComment() {
@@ -135,21 +130,20 @@ export default {
         this.comment.ticketid &&
         this.comment.comment
       ) {
-        this.$store.dispatch("comment/create", this.comment).then(
-          response => {
-            console.log(response);
-            this.$store.dispatch("ticket/all");
-            this.dialog = false;
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        this.$store.dispatch("comment/create", this.comment);
       }
+    },
+
+    removeComment(id) {
+      console.log(id)
+      this.$store.dispatch("comment/delete", id);
     }
   },
 
   computed: {
+    ...mapGetters({
+      agents: "user/agents"
+    }),
     currentTicket() {
       return this.$store.getters["ticket/selectedTicket"];
     },

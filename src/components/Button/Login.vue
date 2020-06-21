@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-btn color="white" v-on="on" text="Login">
+      <v-btn color="white" v-on="on" text="Login" name="openlogin">
         <v-icon>mdi-login</v-icon>
         Login
       </v-btn>
@@ -32,6 +32,7 @@
                 :rules="[rules.required, rules.min]"
                 label="Enter your password*"
                 hint="At least 8 characters"
+                name="password"
                 validate
                 counter
                 :type="'password'"

@@ -4,7 +4,8 @@ export const comment = {
     namespaced: true,
 
     state: {
-        newCompany: ''
+        comment: '',
+        removedComment: ''
     },
 
     actions: {
@@ -17,13 +18,25 @@ export const comment = {
                     console.log(error);
                 })
         },
+        async delete({ commit }, id) {
+            await CommentService.deleteComment(id)
+            .then(response => {
+                commit('removedComment', response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
     },
     mutations: {
         newComment(state, comment) {
-            state.company = comment;
+            state.comment = comment;
+        },
+        removedComment(state, comment) {
+            state.removedComment = comment;
         },
     },
     getters: {
-        newComment: state => state.newCompany
+        newComment: state => state.comment
     },
 };
